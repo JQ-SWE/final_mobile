@@ -1,29 +1,64 @@
 package com.example.afinal;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ActionBarContainer;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.android.material.navigation.NavigationView;
 
-    private Toolbar hToolBar;
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    //variables
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        hToolBar = findViewById(R.id.HomeToolBar);
-        setSupportActionBar(hToolBar);
+        Toolbar toolbar = findViewById(R.id.HomeToolBar);
+        setSupportActionBar(toolbar);
+
+        //Hooks
+        drawerLayout = findViewById(R.id.DrawerLayout);
+        navigationView = findViewById(R.id.NavView);
+        toolbar = findViewById(R.id.HomeToolBar);
+
+        //toolbar
+        setSupportActionBar(toolbar);
+
+        //navigation menu
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
+
+    }
+
+    public void onBackPressed(){
+
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else{
+            super.onBackPressed();
+        }
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.additional_menu, menu);
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return true;
     }
-
 }
