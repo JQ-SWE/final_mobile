@@ -1,4 +1,10 @@
 <resources>
+
+    <string name="app_name">MelTraffic</string>
+    <string name="navigation_drawer_open">Open navigation drawer.</string>
+    <string name="navigation_drawer_close">Close navigation drawer.</string>
+
+
     <string name="app_name">final</string>
 
     <string-array name="spinner_city">
@@ -15,4 +21,5 @@
         <item>CURP</item>
         <item>Passport</item>
     </string-array>
+
 </resources>
