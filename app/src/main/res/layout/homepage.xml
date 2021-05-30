@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".HomeActivity"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
     android:id="@+id/DrawerLayout">
@@ -56,20 +56,21 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/imageView"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
+                            android:id="@+id/NewTripIcon"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
                             android:layout_centerHorizontal="true"
-                            tools:srcCompat="@tools:sample/avatars" />
+                            tools:srcCompat="@drawable/ic_launcher_foreground" />
 
                         <TextView
-                            android:id="@+id/textView"
+                            android:id="@+id/NewTripText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/imageView"
+                            android:layout_below="@id/NewTripIcon"
                             android:layout_centerHorizontal="true"
-                            android:text="TextView"
-                            android:textSize="24sp" />
+                            android:padding="10dp"
+                            android:text="New Trip"
+                            android:textSize="18sp" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -81,23 +82,24 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="128dp">
 
                         <ImageView
-                            android:id="@+id/imageView2"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
+                            android:id="@+id/RoadConditionIcon"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
                             android:layout_centerHorizontal="true"
-                            tools:srcCompat="@tools:sample/avatars" />
+                            tools:srcCompat="@drawable/road_condion_icon" />
 
                         <TextView
-                            android:id="@+id/textView2"
+                            android:id="@+id/RoadConditionText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/imageView2"
+                            android:layout_below="@id/RoadConditionIcon"
                             android:layout_centerHorizontal="true"
-                            android:text="TextView"
-                            android:textSize="24sp" />
+                            android:padding="10dp"
+                            android:text="Road Condition"
+                            android:textSize="18sp" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
@@ -124,20 +126,22 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/imageView3"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
+                            android:id="@+id/BikeShareIcon"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
                             android:layout_centerHorizontal="true"
-                            tools:srcCompat="@tools:sample/avatars" />
+                            android:background="#FFFFFF"
+                            tools:srcCompat="@drawable/bike_share_icon" />
 
                         <TextView
-                            android:id="@+id/textView3"
+                            android:id="@+id/BikeShareText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/imageView3"
+                            android:layout_below="@id/BikeShareIcon"
                             android:layout_centerHorizontal="true"
-                            android:text="TextView"
-                            android:textSize="24sp" />
+                            android:padding="10dp"
+                            android:text="Bike Share"
+                            android:textSize="18sp" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -152,20 +156,21 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/imageView4"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
+                            android:id="@+id/MoveCarIcon"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
                             android:layout_centerHorizontal="true"
-                            tools:srcCompat="@tools:sample/avatars" />
+                            tools:srcCompat="@drawable/move_car_icon" />
 
                         <TextView
-                            android:id="@+id/textView4"
+                            android:id="@+id/MoveCarText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/imageView4"
+                            android:layout_below="@id/MoveCarIcon"
                             android:layout_centerHorizontal="true"
-                            android:text="TextView"
-                            android:textSize="24sp" />
+                            android:padding="10dp"
+                            android:text="Move The Car"
+                            android:textSize="18sp" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
@@ -192,20 +197,21 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/imageView5"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
+                            android:id="@+id/ManageCarIcon"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
                             android:layout_centerHorizontal="true"
-                            tools:srcCompat="@tools:sample/avatars" />
+                            tools:srcCompat="@drawable/manage_car_icon" />
 
                         <TextView
-                            android:id="@+id/textView5"
+                            android:id="@+id/ManageCarText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/imageView5"
+                            android:layout_below="@id/ManageCarIcon"
                             android:layout_centerHorizontal="true"
-                            android:text="TextView"
-                            android:textSize="24sp" />
+                            android:padding="10dp"
+                            android:text="Manage My Car"
+                            android:textSize="18sp" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -221,8 +227,8 @@
 
                         <ImageView
                             android:id="@+id/imageView6"
-                            android:layout_width="75dp"
-                            android:layout_height="75dp"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
                             android:layout_centerHorizontal="true"
                             tools:srcCompat="@tools:sample/avatars" />
 
@@ -232,8 +238,9 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/imageView6"
                             android:layout_centerHorizontal="true"
+                            android:padding="10dp"
                             android:text="TextView"
-                            android:textSize="24sp" />
+                            android:textSize="18sp" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
