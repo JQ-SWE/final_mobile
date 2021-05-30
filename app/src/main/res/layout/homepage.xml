@@ -60,7 +60,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_centerHorizontal="true"
-                            tools:srcCompat="@drawable/ic_launcher_foreground" />
+                            android:src="@drawable/new_trip_icon"/>
 
                         <TextView
                             android:id="@+id/NewTripText"
@@ -89,7 +89,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_centerHorizontal="true"
-                            tools:srcCompat="@drawable/road_condion_icon" />
+                            android:src="@drawable/road_condion_icon" />
 
                         <TextView
                             android:id="@+id/RoadConditionText"
@@ -131,7 +131,7 @@
                             android:layout_height="80dp"
                             android:layout_centerHorizontal="true"
                             android:background="#FFFFFF"
-                            tools:srcCompat="@drawable/bike_share_icon" />
+                            android:src="@drawable/bike_share_icon" />
 
                         <TextView
                             android:id="@+id/BikeShareText"
@@ -160,7 +160,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_centerHorizontal="true"
-                            tools:srcCompat="@drawable/move_car_icon" />
+                            android:src="@drawable/move_car_icon" />
 
                         <TextView
                             android:id="@+id/MoveCarText"
@@ -201,7 +201,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_centerHorizontal="true"
-                            tools:srcCompat="@drawable/manage_car_icon" />
+                            android:src="@drawable/manage_car_icon" />
 
                         <TextView
                             android:id="@+id/ManageCarText"
@@ -230,7 +230,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_centerHorizontal="true"
-                            tools:srcCompat="@tools:sample/avatars" />
+                            android:src="@drawable/manage_car_icon" />
 
                         <TextView
                             android:id="@+id/textView6"
