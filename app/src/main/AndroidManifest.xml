@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Final">
       
-        <activity android:name=".HomeActivity">
+        <activity android:name=".HomeActivity"/>
           
         <activity android:name=".ChangePasswordActivity"></activity>
         <activity android:name=".FindPasswordActivity"></activity>
