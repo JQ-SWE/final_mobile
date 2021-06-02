@@ -3,6 +3,7 @@ package com.example.afinal;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -39,9 +40,15 @@ public class MainActivity extends AppCompatActivity {
         mNextBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                mSlideViewPager.setCurrentItem(mCurrentPage+1);
+                if (mCurrentPage== mDots.length-1) {
+                    mSlideViewPager.setCurrentItem(mCurrentPage+1);
+                    Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                    startActivity(intent);
+                }else {mSlideViewPager.setCurrentItem(mCurrentPage+1);}
             }
         });
+
+
 
         mBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
