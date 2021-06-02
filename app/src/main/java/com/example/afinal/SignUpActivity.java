@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import static com.example.afinal.R.array.spinner_certificatetype;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -58,13 +61,14 @@ public class SignUpActivity extends AppCompatActivity {
                             Boolean insert = DB.insertData(certtype, certnumber, Name, phone, Location, pass, question, answer);
                             if (insert){
                                 Toast.makeText(SignUpActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), MainActivity_test.class);
+                                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                 startActivity(intent);
                             }else{
                                 Toast.makeText(SignUpActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
                             }
                         }else{
                             Toast.makeText(SignUpActivity.this, "User already exist! Please sign in", Toast.LENGTH_SHORT).show();
+
                         }
                     }else{
                         Toast.makeText(SignUpActivity.this, "Password not matching", Toast.LENGTH_SHORT).show();

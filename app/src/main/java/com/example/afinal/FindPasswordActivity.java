@@ -46,7 +46,7 @@ public class FindPasswordActivity extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(FindPasswordActivity.this, "User found", Toast.LENGTH_SHORT).show();
-                    //String Question = DB.getQuestion(Phone);
+                    String Question = DB.getQuestion(Phone);
                     question.setText("Question");
                 }
             }
