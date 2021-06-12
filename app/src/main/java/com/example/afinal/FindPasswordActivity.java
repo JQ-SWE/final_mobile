@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 public class FindPasswordActivity {
 
-    public EditText phone;
     private EditText certificateno, answer, phone;
     private Button back, submit, getquestion;
     private TextView question;
@@ -81,7 +80,7 @@ public class FindPasswordActivity {
                         Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
                         startActivity(intent);
                     }
-                }
+
 
                     /*
                     if (!checkCerto) {
