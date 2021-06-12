@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">final</string>
+
+    <string name="app_name">MelTraffic</string>
+    <string name="navigation_drawer_open">Open navigation drawer.</string>
+    <string name="navigation_drawer_close">Close navigation drawer.</string>
+    <string name="Google_Maps_API_key">AIzaSyBrz7h0iz_24QhvTlZIdTp89BS1Fx860M0</string>
 
     <string-array name="spinner_city">
         <item>1</item>
@@ -15,4 +19,5 @@
         <item>CURP</item>
         <item>Passport</item>
     </string-array>
+
 </resources>
