@@ -1,7 +1,5 @@
 package com.example.afinal;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -36,15 +34,15 @@ public class LoginActivity {
                 String phone = phonenumber.getText().toString();
                 String pass = password.getText().toString();
 
-                if (phone.equals("")||pass.equals(""))
+                if (phone.equals("") || pass.equals(""))
                     Toast.makeText(LoginActivity.this, "Please enter all the field", Toast.LENGTH_SHORT).show();
-                else{
+                else {
                     Boolean checkuserpass = DB.checkPhoneNumberPassword(phone, pass);
                     if (checkuserpass == true) {
                         Toast.makeText(LoginActivity.this, "Sign in successfully", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         startActivity(intent);
-                    }else {
+                    } else {
                         Toast.makeText(LoginActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                     }
                 }

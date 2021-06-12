@@ -1,8 +1,5 @@
 package com.example.afinal;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -10,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.viewpager.widget.ViewPager;
 
 public class MainActivity {
 
@@ -37,38 +36,39 @@ public class MainActivity {
         addDotsIndicator(0);
         mSlideViewPager.addOnPageChangeListener(viewListener);
 
-        mNextBtn.setOnClickListener(new View.OnClickListener(){
+        mNextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mCurrentPage== mDots.length-1) {
-                    mSlideViewPager.setCurrentItem(mCurrentPage+1);
-                    Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                if (mCurrentPage == mDots.length - 1) {
+                    mSlideViewPager.setCurrentItem(mCurrentPage + 1);
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
-                }else {mSlideViewPager.setCurrentItem(mCurrentPage+1);}
+                } else {
+                    mSlideViewPager.setCurrentItem(mCurrentPage + 1);
+                }
             }
         });
-
 
 
         mBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mSlideViewPager.setCurrentItem(mCurrentPage-1);
+                mSlideViewPager.setCurrentItem(mCurrentPage - 1);
             }
         });
     }
 
-    public void addDotsIndicator(int position){
+    public void addDotsIndicator(int position) {
         mDots = new TextView[3];
         mDotLayout.removeAllViews();
-        for (int i=0;i<mDots.length;i++){
+        for (int i = 0; i < mDots.length; i++) {
             mDots[i] = new TextView(this);
             mDots[i].setText(Html.fromHtml("&#8226;"));
             mDots[i].setTextSize(35);
             mDots[i].setTextColor(getResources().getColor(R.color.colorTransparentWhite));
             mDotLayout.addView(mDots[i]);
         }
-        if(mDots.length >0){
+        if (mDots.length > 0) {
             mDots[position].setTextColor(getResources().getColor(R.color.colorAccent));
 
         }
@@ -85,21 +85,19 @@ public class MainActivity {
             addDotsIndicator(position);
             mCurrentPage = position;
 
-            if(position ==0){
+            if (position == 0) {
                 mNextBtn.setEnabled(true);
                 mBackBtn.setEnabled(false);
                 mBackBtn.setVisibility(View.INVISIBLE);
                 mNextBtn.setText("Next");
                 mBackBtn.setText("");
-            }
-            else if (position== mDots.length-1){
+            } else if (position == mDots.length - 1) {
                 mNextBtn.setEnabled(true);
                 mBackBtn.setEnabled(true);
                 mBackBtn.setVisibility(View.VISIBLE);
                 mNextBtn.setText("Finish");
                 mBackBtn.setText("Back");
-            }
-            else {
+            } else {
                 mNextBtn.setEnabled(true);
                 mBackBtn.setEnabled(true);
                 mBackBtn.setVisibility(View.VISIBLE);

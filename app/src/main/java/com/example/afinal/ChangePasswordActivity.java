@@ -25,10 +25,9 @@ public class ChangePasswordActivity extends FindPasswordActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(password != repassword){
+                if (password != repassword) {
                     Toast.makeText(ChangePasswordActivity.this, "The re-password should be the same as the password!", Toast.LENGTH_SHORT).show();
-                }
-                else{
+                } else {
                     String Phone = phone.getText().toString();
                     String Password = password.getText().toString();
                     boolean ischanged = DB.changepassword(Phone, Password);
