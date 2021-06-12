@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity {
 
     private EditText phonenumber, password, repassword, certificatenumber, name, securityquestion, securityanswer;
     private Button signup, signin;
