@@ -12,10 +12,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class FindPasswordActivity {
+public class FindPasswordActivity extends AppCompatActivity{
 
     public EditText phone;
-    private EditText certificateno, answer, phone;
+    private EditText certificateno, answer;
     private Button back, submit, getquestion;
     private TextView question;
     private DatabaseHelper DB;

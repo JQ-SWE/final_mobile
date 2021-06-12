@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity {
+public class MainActivity extends AppCompatActivity{
 
     private ViewPager mSlideViewPager;
     private LinearLayout mDotLayout;
