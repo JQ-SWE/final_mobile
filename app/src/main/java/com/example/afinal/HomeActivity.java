@@ -13,7 +13,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     //variables
     DrawerLayout drawerLayout;
