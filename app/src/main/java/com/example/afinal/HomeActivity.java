@@ -10,7 +10,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.navigation.NavigationView;
 
 public class HomeActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -19,6 +22,7 @@ public class HomeActivity implements NavigationView.OnNavigationItemSelectedList
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    Button newTripFunc;
 
 
     @Override
@@ -33,6 +37,7 @@ public class HomeActivity implements NavigationView.OnNavigationItemSelectedList
         drawerLayout = findViewById(R.id.DrawerLayout);
         navigationView = findViewById(R.id.NavView);
         toolbar = findViewById(R.id.HomeToolBar);
+        newTripFunc = findViewById(R.id.NewTrip);
 
         //toolbar
         setSupportActionBar(toolbar);
@@ -44,6 +49,14 @@ public class HomeActivity implements NavigationView.OnNavigationItemSelectedList
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        newTripFunc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this,NewTripTest.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -67,4 +80,6 @@ public class HomeActivity implements NavigationView.OnNavigationItemSelectedList
         }
         return true;
     }
+
+
 }
