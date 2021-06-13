@@ -7,8 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginActivity {
+
+public class LoginActivity extends AppCompatActivity {
 
     private EditText phonenumber, password;
     private Button btnlogin;

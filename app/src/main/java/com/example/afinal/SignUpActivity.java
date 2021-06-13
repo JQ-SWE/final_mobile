@@ -8,8 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class SignUpActivity {
+
+public class SignUpActivity extends AppCompatActivity {
 
     private EditText phonenumber, password, repassword, certificatenumber, name, securityquestion, securityanswer;
     private Button signup, signin;

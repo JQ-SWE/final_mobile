@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class ChangePasswordActivity extends FindPasswordActivity {
 
-    private EditText password, repassword;
+    private EditText password, repassword, phone;
     private Button submit;
     private DatabaseHelper DB;
 

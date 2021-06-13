@@ -1,5 +1,6 @@
 package com.example.afinal;
 
+import android.app.AppComponentFactory;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -9,7 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class FindPasswordActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class FindPasswordActivity extends AppCompatActivity {
 
     private EditText certificateno, answer, phone;
     private Button back, submit, getquestion;
