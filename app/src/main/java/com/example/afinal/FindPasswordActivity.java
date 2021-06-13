@@ -1,8 +1,6 @@
 package com.example.afinal;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.AppComponentFactory;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -12,9 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class FindPasswordActivity {
+import androidx.appcompat.app.AppCompatActivity;
 
-    public EditText phone;
+public class FindPasswordActivity extends AppCompatActivity {
+
     private EditText certificateno, answer, phone;
     private Button back, submit, getquestion;
     private TextView question;
@@ -42,14 +41,13 @@ public class FindPasswordActivity {
                 String Phone = phone.getText().toString();
 
                 Boolean checkuser = DB.checkUser(Phone);
-                if (!checkuser){
+                if (!checkuser) {
                     Toast.makeText(FindPasswordActivity.this, "User not found", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(FindPasswordActivity.this, "User found", Toast.LENGTH_SHORT).show();
                     Cursor cursor = DB.getQuestion(Phone);
                     StringBuilder stringBuilder = new StringBuilder();
-                    while(cursor.moveToNext()){
+                    while (cursor.moveToNext()) {
                         stringBuilder.append(cursor.getString(6));
                         question.setText(stringBuilder);
                     }
@@ -73,19 +71,19 @@ public class FindPasswordActivity {
                 String certno = certificateno.getText().toString();
                 String Answer = answer.getText().toString();
 
-                if (certno.equals("")||Answer.equals(""))
+                if (certno.equals("") || Answer.equals(""))
                     Toast.makeText(FindPasswordActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else{
+                else {
                     Cursor checkCerto = DB.getPhoneCertno(Phone);
                     Cursor checkAnswer = DB.getPhoneAnswer(Phone);
                     if (checkCerto.getString(1) != certno) {
                         Toast.makeText(FindPasswordActivity.this, certno, Toast.LENGTH_SHORT).show();
-                    }
-                    else{
+                    } else {
                         Toast.makeText(FindPasswordActivity.this, "Authentication Success", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
                         startActivity(intent);
                     }
+
 
                     /*
                     if (!checkCerto) {
@@ -104,6 +102,5 @@ public class FindPasswordActivity {
                 }
             }
         });
-
     }
 }

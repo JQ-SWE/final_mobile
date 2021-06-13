@@ -1,7 +1,5 @@
 package com.example.afinal;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class SignUpActivity {
+
+public class SignUpActivity extends AppCompatActivity {
 
     private EditText phonenumber, password, repassword, certificatenumber, name, securityquestion, securityanswer;
     private Button signup, signin;
@@ -49,24 +49,24 @@ public class SignUpActivity {
                 String question = securityquestion.getText().toString();
                 String answer = securityanswer.getText().toString();
 
-                if (phone.equals("")||pass.equals("")||repass.equals(""))
+                if (phone.equals("") || pass.equals("") || repass.equals(""))
                     Toast.makeText(SignUpActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else{
-                    if (pass.equals(repass)){
+                else {
+                    if (pass.equals(repass)) {
                         Boolean checkuser = DB.checkUser(phone);
-                        if (!checkuser){
+                        if (!checkuser) {
                             Boolean insert = DB.insertData(certtype, certnumber, Name, phone, Location, pass, question, answer);
-                            if (insert){
+                            if (insert) {
                                 Toast.makeText(SignUpActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
-                            }else{
+                            } else {
                                 Toast.makeText(SignUpActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
                             }
-                        }else{
+                        } else {
                             Toast.makeText(SignUpActivity.this, "User already exist! Please sign in", Toast.LENGTH_SHORT).show();
                         }
-                    }else{
+                    } else {
                         Toast.makeText(SignUpActivity.this, "Password not matching", Toast.LENGTH_SHORT).show();
                     }
                 }
