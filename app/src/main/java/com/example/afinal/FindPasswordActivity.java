@@ -1,8 +1,6 @@
 package com.example.afinal;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.AppComponentFactory;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -12,10 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class FindPasswordActivity extends AppCompatActivity {
 
-    public EditText phone;
-    private EditText certificateno, answer;
+    private EditText certificateno, answer, phone;
     private Button back, submit, getquestion;
     private TextView question;
     private DatabaseHelper DB;
@@ -38,16 +37,20 @@ public class FindPasswordActivity extends AppCompatActivity {
         getquestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String Phone = phone.getText().toString();
 
                 Boolean checkuser = DB.checkUser(Phone);
-                if (!checkuser){
+                if (!checkuser) {
                     Toast.makeText(FindPasswordActivity.this, "User not found", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(FindPasswordActivity.this, "User found", Toast.LENGTH_SHORT).show();
-                    //String Question = DB.getQuestion(Phone);
-                    question.setText("Question");
+                    Cursor cursor = DB.getQuestion(Phone);
+                    StringBuilder stringBuilder = new StringBuilder();
+                    while (cursor.moveToNext()) {
+                        stringBuilder.append(cursor.getString(6));
+                        question.setText(stringBuilder);
+                    }
                 }
             }
         });
@@ -55,7 +58,7 @@ public class FindPasswordActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
                 startActivity(intent);
             }
         });
@@ -68,20 +71,36 @@ public class FindPasswordActivity extends AppCompatActivity {
                 String certno = certificateno.getText().toString();
                 String Answer = answer.getText().toString();
 
-                if (certno.equals("")||Answer.equals(""))
+                if (certno.equals("") || Answer.equals(""))
                     Toast.makeText(FindPasswordActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else{
-                    Boolean checkuserinfo = DB.checkCertnoAnswer(Phone, certno, Answer);
-                    if (checkuserinfo == true) {
+                else {
+                    Cursor checkCerto = DB.getPhoneCertno(Phone);
+                    Cursor checkAnswer = DB.getPhoneAnswer(Phone);
+                    if (checkCerto.getString(1) != certno) {
+                        Toast.makeText(FindPasswordActivity.this, certno, Toast.LENGTH_SHORT).show();
+                    } else {
                         Toast.makeText(FindPasswordActivity.this, "Authentication Success", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
                         startActivity(intent);
-                    }else {
-                        Toast.makeText(FindPasswordActivity.this, "Authentication Failure", Toast.LENGTH_SHORT).show();
                     }
+
+
+                    /*
+                    if (!checkCerto) {
+                        Toast.makeText(FindPasswordActivity.this, "Wrong Certificate Number", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        if (!checkAnswer){
+                            Toast.makeText(FindPasswordActivity.this, "Wrong Security Answer", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(FindPasswordActivity.this, "Authentication Success", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                            startActivity(intent);
+                        }
+                    }*/
                 }
             }
         });
-
     }
 }

@@ -5,15 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-
-import java.net.PasswordAuthentication;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     //create database
     public static final String DBNAME = "login.db";
+
     public DatabaseHelper(@Nullable Context context) {
         super(context, DBNAME, null, 1);
     }
@@ -32,8 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //to insert data
-    public Boolean insertData(String certificateType, String certificateNumber, String name, String phoneNumber, String location, String password, String securityQuestion, String securityAnswer)
-    {
+    public Boolean insertData(String certificateType, String certificateNumber, String name, String phoneNumber, String location, String password, String securityQuestion, String securityAnswer) {
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("certificateType", certificateType);
@@ -45,13 +42,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("securityQuestion", securityQuestion);
         contentValues.put("securityAnswer", securityAnswer);
         long result = myDB.insert("users", null, contentValues);
-        if(result == 1) return false;
+        if (result == 1) return false;
         else
             return true;
     }
 
     //to check the phone
-    public Boolean checkUser(String phoneNumber){
+    public Boolean checkUser(String phoneNumber) {
         SQLiteDatabase myDB = this.getWritableDatabase();
         Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phoneNumber});
         if (cursor.getCount() > 0)
@@ -61,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //to check password
-    public  Boolean checkPhoneNumberPassword(String phoneNumber, String password){
+    public Boolean checkPhoneNumberPassword(String phoneNumber, String password) {
         SQLiteDatabase myDB = this.getWritableDatabase();
         Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ? AND PASSWORD = ?", new String[]{phoneNumber, password});
         if (cursor.getCount() > 0)
@@ -70,27 +67,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    public Boolean checkCertnoAnswer(String phoneNumber, String certno, String answer){
-        SQLiteDatabase myDB = this.getWritableDatabase();
-        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ? AND CERTIFICATENUMBER = ? AND ANSWER = ?", new String[]{phoneNumber, certno, answer});
-        if (cursor.getCount() > 0)
-            return true;
-        else
-            return false;
+    public Cursor getPhoneAnswer(String phoneNumber) {
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phoneNumber});
+        return cursor;
     }
 
-    public boolean changepassword(String phone, String password){
+    public Cursor getPhoneCertno(String phoneNumber) {
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phoneNumber});
+        return cursor;
+    }
+
+
+    public boolean changepassword(String phone, String password) {
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("password", password);
-        myDB.execSQL("update USERS set password= ? where phone= ?", new String[]{phone, password});
-        return true;
+        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phone});
+        if (cursor.getCount() > 0) {
+            long result = myDB.update("USERS", contentValues, "PHONENUMBER=?", new String[]{phone});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
     }
 
-    public String getQuestion(String phoneNumber){
-        SQLiteDatabase myDB = this.getWritableDatabase();
+    public Cursor getQuestion(String phoneNumber) {
+        SQLiteDatabase myDB = this.getReadableDatabase();
         Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phoneNumber});
-        String question = cursor.getString(6);
-        return question;
+        return cursor;
     }
 }
