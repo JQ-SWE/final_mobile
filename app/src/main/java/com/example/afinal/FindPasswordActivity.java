@@ -68,16 +68,17 @@ public class FindPasswordActivity extends AppCompatActivity {
                 String certno = certificateno.getText().toString();
                 String Answer = answer.getText().toString();
 
-                if (certno.equals("")||Answer.equals(""))
+                if (certno.equals("") || Answer.equals(""))
                     Toast.makeText(FindPasswordActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else{
-                    Boolean checkuserinfo = DB.checkCertnoAnswer(Phone, certno, Answer);
-                    if (checkuserinfo == true) {
+                else {
+                    Cursor checkCerto = DB.getPhoneCertno(Phone);
+                    Cursor checkAnswer = DB.getPhoneAnswer(Phone);
+                    if (checkCerto.getString(1) != certno) {
+                        Toast.makeText(FindPasswordActivity.this, certno, Toast.LENGTH_SHORT).show();
+                    } else {
                         Toast.makeText(FindPasswordActivity.this, "Authentication Success", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
                         startActivity(intent);
-                    }else {
-                        Toast.makeText(FindPasswordActivity.this, "Authentication Failure", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

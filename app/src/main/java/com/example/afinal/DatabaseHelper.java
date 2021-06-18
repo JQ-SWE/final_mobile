@@ -70,27 +70,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    public Boolean checkCertnoAnswer(String phoneNumber, String certno, String answer){
-        SQLiteDatabase myDB = this.getWritableDatabase();
-        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ? AND CERTIFICATENUMBER = ? AND ANSWER = ?", new String[]{phoneNumber, certno, answer});
-        if (cursor.getCount() > 0)
-            return true;
-        else
-            return false;
+    public Cursor getPhoneAnswer(String phoneNumber) {
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phoneNumber});
+        return cursor;
     }
 
-    public boolean changepassword(String phone, String password){
+    public Cursor getPhoneCertno(String phoneNumber) {
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phoneNumber});
+        return cursor;
+    }
+
+
+    public boolean changepassword(String phone, String password) {
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("password", password);
-        myDB.execSQL("update USERS set password= ? where phone= ?", new String[]{phone, password});
-        return true;
+        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phone});
+        if (cursor.getCount() > 0) {
+            long result = myDB.update("USERS", contentValues, "PHONENUMBER=?", new String[]{phone});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
     }
 
-    public String getQuestion(String phoneNumber){
-        SQLiteDatabase myDB = this.getWritableDatabase();
+    public Cursor getQuestion(String phoneNumber) {
+        SQLiteDatabase myDB = this.getReadableDatabase();
         Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phoneNumber});
-        String question = cursor.getString(6);
-        return question;
+        return cursor;
     }
 }
