@@ -7,9 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class ChangePasswordActivity extends FindPasswordActivity {
+import androidx.appcompat.app.AppCompatActivity;
 
-    private EditText password, repassword, phone;
+public class ChangePasswordActivity extends AppCompatActivity {
+
+    private EditText password, repassword;
     private Button submit;
     private DatabaseHelper DB;
 
@@ -25,18 +27,18 @@ public class ChangePasswordActivity extends FindPasswordActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (password != repassword) {
+                if (password.equals(repassword)) {
                     Toast.makeText(ChangePasswordActivity.this, "The re-password should be the same as the password!", Toast.LENGTH_SHORT).show();
                 } else {
-                    String Phone = phone.getText().toString();
+                    Intent intent = getIntent();
+                    String Phone = intent.getStringExtra("phone");
                     String Password = password.getText().toString();
-                    boolean ischanged = DB.changepassword(Phone, Password);
+                    DB.changePassword(Phone, Password);
                     Toast.makeText(ChangePasswordActivity.this, "Your password has been changed successfully", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(intent);
+                    Intent intent1 = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent1);
                 }
             }
         });
-
     }
 }

@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class FindPasswordActivity extends AppCompatActivity {
 
-    private EditText certificateno, answer, phone;
+    private EditText answer, phone;
     private Button back, submit, getquestion;
     private TextView question;
     private DatabaseHelper DB;
@@ -24,7 +24,6 @@ public class FindPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_password);
 
-        certificateno = (EditText) findViewById(R.id.et_retrieve_certificatenumber);
         answer = (EditText) findViewById(R.id.et_retrieve_securityanswer);
         phone = (EditText) findViewById(R.id.et_retrieve_phone);
         back = (Button) findViewById(R.id.btn_retrieve_back);
@@ -58,7 +57,7 @@ public class FindPasswordActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -68,37 +67,20 @@ public class FindPasswordActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String Phone = phone.getText().toString();
-                String certno = certificateno.getText().toString();
                 String Answer = answer.getText().toString();
 
-                if (certno.equals("") || Answer.equals(""))
+                if (Answer.equals(""))
                     Toast.makeText(FindPasswordActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 else {
-                    Cursor checkCerto = DB.getPhoneCertno(Phone);
-                    Cursor checkAnswer = DB.getPhoneAnswer(Phone);
-                    if (checkCerto.getString(1) != certno) {
-                        Toast.makeText(FindPasswordActivity.this, certno, Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(FindPasswordActivity.this, "Authentication Success", Toast.LENGTH_SHORT).show();
+                    Boolean checkanswer = DB.checkUserAnswer(Phone, Answer);
+                    if (checkanswer == true) {
+                        Toast.makeText(FindPasswordActivity.this, "Successful Authentication", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                        intent.putExtra("phone",Phone);
                         startActivity(intent);
+                    } else {
+                        Toast.makeText(FindPasswordActivity.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
                     }
-
-
-                    /*
-                    if (!checkCerto) {
-                        Toast.makeText(FindPasswordActivity.this, "Wrong Certificate Number", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        if (!checkAnswer){
-                            Toast.makeText(FindPasswordActivity.this, "Wrong Security Answer", Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            Toast.makeText(FindPasswordActivity.this, "Authentication Success", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
-                            startActivity(intent);
-                        }
-                    }*/
                 }
             }
         });
