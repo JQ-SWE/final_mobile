@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.PagerAdapter;
 
@@ -57,8 +56,9 @@ public class SliderAdapter extends PagerAdapter {
         container.addView(view);
         return view;
     }
-    public void destroyItem(ViewGroup container, int position, Object object){
-        container.removeView((ConstraintLayout)object);
+
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        container.removeView((ConstraintLayout) object);
     }
 
 
