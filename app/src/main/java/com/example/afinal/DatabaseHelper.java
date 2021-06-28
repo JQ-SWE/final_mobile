@@ -67,39 +67,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    public Cursor getPhoneAnswer(String phoneNumber) {
-        SQLiteDatabase myDB = this.getReadableDatabase();
-        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phoneNumber});
-        return cursor;
-    }
-
-    public Cursor getPhoneCertno(String phoneNumber) {
-        SQLiteDatabase myDB = this.getReadableDatabase();
-        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phoneNumber});
-        return cursor;
-    }
-
-
-    public boolean changepassword(String phone, String password) {
+    public Boolean checkUserAnswer(String phoneNumber, String answer) {
         SQLiteDatabase myDB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("password", password);
-        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phone});
-        if (cursor.getCount() > 0) {
-            long result = myDB.update("USERS", contentValues, "PHONENUMBER=?", new String[]{phone});
-            if (result == -1) {
-                return false;
-            } else {
-                return true;
-            }
-        } else {
+        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ? AND securityAnswer = ?", new String[]{phoneNumber, answer});
+        if (cursor.getCount() > 0)
+            return true;
+        else
             return false;
-        }
     }
 
     public Cursor getQuestion(String phoneNumber) {
         SQLiteDatabase myDB = this.getReadableDatabase();
         Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phoneNumber});
         return cursor;
+    }
+
+    public Boolean updatePassword(String phoneNumber, String password)
+    {
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("password", password);
+        long result = myDB.update("users", contentValues, "phoneNumber = ?", new String[] {phoneNumber});
+        if(result == -1) return false;
+        else
+            return true;
     }
 }
