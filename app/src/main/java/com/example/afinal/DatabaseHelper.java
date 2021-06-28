@@ -76,14 +76,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    public void changePassword(String phone,String password) {
-        SQLiteDatabase myDB = this.getWritableDatabase();
-        myDB.execSQL("UPDATE USER SET PASSWORD =? where phone =?", new String[]{phone, password});
-    }
-
     public Cursor getQuestion(String phoneNumber) {
         SQLiteDatabase myDB = this.getReadableDatabase();
         Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phoneNumber});
         return cursor;
+    }
+
+    public Boolean updatePassword(String phoneNumber, String password)
+    {
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("password", password);
+        long result = myDB.update("users", contentValues, "phoneNumber = ?", new String[] {phoneNumber});
+        if(result == -1) return false;
+        else
+            return true;
     }
 }

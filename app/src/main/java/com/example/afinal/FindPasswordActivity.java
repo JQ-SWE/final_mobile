@@ -75,7 +75,7 @@ public class FindPasswordActivity extends AppCompatActivity {
                     if (checkanswer == true) {
                         Toast.makeText(FindPasswordActivity.this, "Successful Authentication", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
-                        intent.putExtra("phone",Phone);
+                        intent.putExtra("userphone", Phone);
                         startActivity(intent);
                     } else {
                         Toast.makeText(FindPasswordActivity.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
