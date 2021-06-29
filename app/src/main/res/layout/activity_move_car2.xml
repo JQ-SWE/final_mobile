@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MoveCarActivity2">
+
+    <View
+        android:id="@+id/headline_bikeshare"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/grey" />
+
+    <TextView
+        android:id="@+id/tv_movecar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="monospace"
+        android:padding="25dp"
+        android:text="Move the car"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/movecar2_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        app:srcCompat="@drawable/abc_vector_test" />
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please fill in the blocking vehicle's information correctly !"
+        android:textSize="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+
+    <TextView
+        android:id="@+id/tv_Licenseplatenumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="License plate number :"
+        android:textSize="20dp"
+        android:layout_below="@+id/tv_info"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"/>
+
+    <EditText
+        android:id="@+id/et_Licenseplatenumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_Licenseplatenumber"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:hint="eg. VUK-15-75"/>
+
+    <TextView
+        android:id="@+id/tv_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location :"
+        android:textSize="20dp"
+        android:layout_below="@+id/et_Licenseplatenumber"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp" />
+
+    <EditText
+        android:id="@+id/et_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_location"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:hint="Please enter the location of that car"/>
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Leave a message :"
+        android:textSize="20dp"
+        android:layout_below="@+id/et_location"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp" />
+
+    <EditText
+        android:id="@+id/et_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_message"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:hint="Please leave a message for the car owner"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Relative photos"
+        android:textSize="20dp"
+        android:layout_below="@id/et_message"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="?android:attr/listDivider"
+        android:layout_below="@+id/et_message"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
+
+    <ImageView
+        android:id="@+id/btn_carphoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divider"
+        android:layout_marginTop="-25dp"
+        android:background="#DFDEDE"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:layout_marginStart="-10dp"
+        android:src="@drawable/photo" />
+
+    <Button
+        android:id="@+id/movecar2_submit"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="SUBMIT"
+        android:layout_below="@id/et_message"
+        android:layout_marginTop="180dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
+
+
+</RelativeLayout>

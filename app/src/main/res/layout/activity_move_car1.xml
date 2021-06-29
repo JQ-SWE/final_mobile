@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MoveCarActivity1">
+
+    <View
+        android:id="@+id/headline_bikeshare"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/grey" />
+
+    <TextView
+        android:id="@+id/tv_movecar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="monospace"
+        android:padding="25dp"
+        android:text="Move the car"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/movecar1_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        app:srcCompat="@drawable/abc_vector_test" />
+
+    <TextView
+        android:id="@+id/tv_movecar_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="460dp"
+        android:text="Time :"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/et_movecar_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="450dp"
+        android:ems="10"
+        android:inputType="time"/>
+
+    <TextView
+        android:id="@+id/tv_movecar_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:text="Location :"
+        android:textSize="20dp"
+        android:layout_below="@+id/tv_movecar_time"/>
+
+    <EditText
+        android:id="@+id/et_movecar_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/et_movecar_time"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="APPLY FOR MOVING THE CAR"
+        android:textSize="20dp"
+        android:layout_below="@+id/et_movecar_location"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

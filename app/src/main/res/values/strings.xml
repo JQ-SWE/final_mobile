@@ -19,5 +19,6 @@
         <item>CURP</item>
         <item>Passport</item>
     </string-array>
+    <string name="title_activity_bike_share_maps">Map</string>
 
 </resources>
