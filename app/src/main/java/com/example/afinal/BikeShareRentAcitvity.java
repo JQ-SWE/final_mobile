@@ -18,6 +18,7 @@ public class BikeShareRentAcitvity extends AppCompatActivity {
 
     ImageButton btScan;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +42,6 @@ public class BikeShareRentAcitvity extends AppCompatActivity {
                 intentIntegrator.setCaptureActivity(Capture.class);
                 //initiate scan
                 intentIntegrator.initiateScan();
-
             }
         });
     }
