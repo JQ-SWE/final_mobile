@@ -71,7 +71,7 @@
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:text="APPLY FOR MOVING THE CAR"
         android:textSize="20dp"
         android:layout_below="@+id/et_movecar_location"
