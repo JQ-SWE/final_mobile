@@ -62,7 +62,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         bikeShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this,BikeShareMapsActivity.class);
+                Intent intent = new Intent(HomeActivity.this,BikeShareRentAcitvity.class);
                 startActivity(intent);
             }
         });
