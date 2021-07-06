@@ -7,10 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class BikeShareRecordActivity extends AppCompatActivity {
 
-    ImageButton back;
+    ImageView back;
 
 
     @Override
@@ -18,7 +19,7 @@ public class BikeShareRecordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bike_share_record);
 
-        back = (ImageButton) findViewById(R.id.BikeShare_record_back);
+        back = (ImageView) findViewById(R.id.BikeShare_record_back);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
