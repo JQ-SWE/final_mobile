@@ -14,15 +14,19 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+
 public class MoveCarActivity3 extends AppCompatActivity {
 
     Button btn_capture, btn_choose, btn_submit;
     ImageView photo;
+    Bitmap captureImage;
 
     private static final int IMAGE_PICK_CODE = 1000;
     private static final int PERMISSION_CODE = 1001;
@@ -36,6 +40,11 @@ public class MoveCarActivity3 extends AppCompatActivity {
         btn_capture = (Button) findViewById(R.id.btn_movecarcapture);
         btn_choose = (Button) findViewById(R.id.btn_movecarchoose);
         btn_submit = (Button) findViewById(R.id.btn_movecarsubmit);
+
+        Intent intent = getIntent();
+        String License = intent.getStringExtra("license");
+        String Location = intent.getStringExtra("location");
+        String Message = intent.getStringExtra("message");
 
         if(ContextCompat.checkSelfPermission(MoveCarActivity3.this,
                 Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
@@ -76,10 +85,17 @@ public class MoveCarActivity3 extends AppCompatActivity {
                     }
                 }
             });
+
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(MoveCarActivity3.this,MoveCarActivity4.class);
+                intent.putExtra("license", License);
+                intent.putExtra("location", Location);
+                intent.putExtra("message", Message);
+                intent.putExtra("image", captureImage);
+                startActivity(intent);
             }
         });
     }
@@ -114,12 +130,12 @@ public class MoveCarActivity3 extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100) {
             //get capture image
-            Bitmap captureImage = (Bitmap) data.getExtras().get("data");
+            captureImage = (Bitmap) data.getExtras().get("data");
             //set capture image to imageview
             photo.setImageBitmap(captureImage);
         }
 
-        if(resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE){
+        if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             //set image to imageview
             photo.setImageURI(data.getData());
         }
