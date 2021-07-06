@@ -16,9 +16,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.provider.Settings;
-import android.provider.Telephony;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,7 +32,6 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -54,25 +51,24 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
-public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback {
+public class CitiBikeActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     boolean isPermissionGranted; //ask for location permission
     GoogleMap MGoogleMap;
-    ImageView Search;
-    EditText inputLocation;
-    Button subway;
+    Button service;
+    Button rent;
+    Button account;
     private boolean mIsRestore;
     private ClusterManager<MyItem> mClusterManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_trip_test);
-        Search = findViewById(R.id.SearchIcon);
-        inputLocation = findViewById(R.id.inputLocation);
-        subway = findViewById(R.id.Subway);
+        setContentView(R.layout.activity_citi_bike);
+        service = findViewById(R.id.Service);
+        rent = findViewById(R.id.Rent);
+        account = findViewById(R.id.Account);
         mIsRestore = savedInstanceState != null;
 
         checkMyPermission();
@@ -81,48 +77,14 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
         if (isPermissionGranted) {
             if (checkGooglePlayServices()) {
                 SupportMapFragment supportMapFragment = SupportMapFragment.newInstance();
-                getSupportFragmentManager().beginTransaction().add(R.id.NewTripContainer, supportMapFragment).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.CitiBikeContainer, supportMapFragment).commit();
                 supportMapFragment.getMapAsync(this);
             } else {
                 Toast.makeText(this, "GooglePlay Services Not Available", Toast.LENGTH_SHORT).show();
             }
         }
-        Search.setOnClickListener(this::geoLocate);
-
-//        subway.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(NewTripTest.this,SubwayActivity.class);
-//                startActivity(intent);
-//            }
-//        });
     }
 
-    private void geoLocate(View view) {
-
-        String locationName = inputLocation.getText().toString();
-        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-        try {
-            List<Address> addressList = geocoder.getFromLocationName(locationName,1);
-
-            if(addressList.size()>0){
-                Address address = addressList.get(0);
-                gotoLocation(address.getLatitude(),address.getLongitude());
-                MGoogleMap.addMarker(new MarkerOptions().position(new LatLng(address.getLatitude(),address.getLongitude())));
-                Toast.makeText(this, address.getLocality(),Toast.LENGTH_SHORT).show();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    private void gotoLocation(double latitude, double longitude) {
-        LatLng latLng = new LatLng(latitude,longitude);
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 18);
-        MGoogleMap.moveCamera(cameraUpdate);
-        MGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-    }
 
     private boolean checkGooglePlayServices() {
         GoogleApiAvailability googleApiAvailability = GoogleApiAvailability.getInstance();
@@ -133,7 +95,7 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
             Dialog dialog = googleApiAvailability.getErrorDialog(this, result, 201, new DialogInterface.OnCancelListener() {
                 @Override
                 public void onCancel(DialogInterface dialog) {
-                    Toast.makeText(NewTripTest.this, "User Canceled Dialog", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CitiBikeActivity.this, "User Canceled Dialog", Toast.LENGTH_SHORT).show();
                 }
             });
             dialog.show();
@@ -148,7 +110,7 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
             @Override
             public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
                 isPermissionGranted = true;
-                Toast.makeText(NewTripTest.this, "Permission grated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CitiBikeActivity.this, "Permission grated", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -221,43 +183,37 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
 
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 17);
             googleMap.animateCamera(cameraUpdate);
-
-            subway.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startCluster(mIsRestore);
-                }
-            });
+            startCluster(mIsRestore);
         }
     }
 
-        @Override
-        public boolean onCreateOptionsMenu (Menu menu){
-            getMenuInflater().inflate(R.menu.map_menu, menu);
-            return true;
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        getMenuInflater().inflate(R.menu.map_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (@NonNull MenuItem item){
+
+        if (item.getItemId() == R.id.NormalMap) {
+            MGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         }
 
-        @Override
-        public boolean onOptionsItemSelected (@NonNull MenuItem item){
-
-            if (item.getItemId() == R.id.NormalMap) {
-                MGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-            }
-
-            if (item.getItemId() == R.id.SatelliteMap) {
-                MGoogleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-            }
-
-            if (item.getItemId() == R.id.MapHybrid) {
-                MGoogleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-            }
-
-            if (item.getItemId() == R.id.MapTerrain) {
-                MGoogleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-            }
-
-            return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.SatelliteMap) {
+            MGoogleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         }
+
+        if (item.getItemId() == R.id.MapHybrid) {
+            MGoogleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        }
+
+        if (item.getItemId() == R.id.MapTerrain) {
+            MGoogleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     protected GoogleMap getMap() { return MGoogleMap; }
 
@@ -285,7 +241,7 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
         mClusterManager.getMarkerCollection().setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
             @Override
             public View getInfoWindow(Marker marker) {
-                final LayoutInflater inflater = LayoutInflater.from(NewTripTest.this);
+                final LayoutInflater inflater = LayoutInflater.from(CitiBikeActivity.this);
                 final View view = inflater.inflate(R.layout.layout, null);
                 final TextView textView = view.findViewById(R.id.textViewTitle);
                 String text = (marker.getTitle() != null) ? marker.getTitle() : "Cluster Item";
@@ -299,7 +255,7 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
             }
         });
         mClusterManager.getMarkerCollection().setOnInfoWindowClickListener(marker ->
-                Toast.makeText(NewTripTest.this,
+                Toast.makeText(CitiBikeActivity.this,
                         "Info window clicked.",
                         Toast.LENGTH_SHORT).show());
 
@@ -315,10 +271,9 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
 
 
     private void readItems() throws JSONException {
-        InputStream inputStream = getResources().openRawResource(R.raw.subway_entrance);
-        List<MyItem> items = new MyItemReader().read(inputStream);
+        InputStream inputStream = getResources().openRawResource(R.raw.bike_stations);
+        List<MyItem> items = new BikeItemReader().read(inputStream);
         mClusterManager.addItems(items);
     }
 
 }
-
