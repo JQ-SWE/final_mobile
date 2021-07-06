@@ -24,7 +24,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     Button newTripFunc;
     Button roadCondiFunc;
-    Button citiBikeFunc;
 
 
     @Override
@@ -41,7 +40,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.HomeToolBar);
         newTripFunc = findViewById(R.id.NewTrip);
         roadCondiFunc = findViewById(R.id.RoadCondition);
-        citiBikeFunc  = findViewById(R.id.CitiBike);
+
         //toolbar
         setSupportActionBar(toolbar);
 
@@ -69,13 +68,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        citiBikeFunc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this,CitiBikeActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
     public void onBackPressed(){
