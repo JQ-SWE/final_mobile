@@ -23,13 +23,14 @@
         android:textColor="@color/white"
         android:textSize="30sp" />
 
-    <ImageView
-        android:id="@+id/BikeShare_rent_back"
+    <ImageButton
+        android:id="@+id/BikeShare_account_back"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
-        app:srcCompat="@drawable/abc_vector_test" />
+        android:src="@drawable/arrow"
+        android:background="@color/grey"/>
 
     <ImageView
         android:id="@+id/BikeShare_imageView"
