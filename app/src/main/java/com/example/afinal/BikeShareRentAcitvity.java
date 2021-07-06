@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,11 +18,19 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class BikeShareRentAcitvity extends AppCompatActivity {
 
     ImageView btScan, back;
     Button confirm;
     EditText identifier;
+
+    //Intent intent = getIntent();
+    //String phone = intent.getStringExtra("PHONE");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +45,15 @@ public class BikeShareRentAcitvity extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String num = identifier.getText().toString();
+
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String datetime = df.format(new Date());
+
+                String Identifier = identifier.getText().toString();
+
                 Intent intent = new Intent(getApplicationContext(), BikeShareRecordActivity.class);
-                intent.putExtra("identifier", num);
+                //intent.putExtra("identifier", Identifier);
+                //intent.putExtra("datetime", datetime);
                 startActivity(intent);
             }
         });

@@ -20,7 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase myDB) {
         myDB.execSQL("CREATE TABLE USERS(certificateType TEXT, certificateNumber TEXT, name TEXT, phoneNumber TEXT primary key, location TEXT, password TEXT, securityQuestion TEXT, securityAnswer TEXT)");
-        myDB.execSQL("CREATE TABLE BIKEACCOUNT(username TEXT, phone TEXT primary key, RENTALNO TEXT, RENTALHOUR TEXT, BALANCE TEXT)");
+        myDB.execSQL("CREATE TABLE BIKEACCOUNT(PHONE TEXT primary key, RENTALNO TEXT, RENTALHOUR TEXT, BALANCE TEXT)");
     }
 
     //drop the table if already exist
@@ -95,18 +95,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //FOR BIKEACCOUNT
-    public Boolean insertData(String username, String phone) {
+    public Boolean topup(String topup) {
         SQLiteDatabase myDB = this.getWritableDatabase();
+        Cursor cursor = myDB.rawQuery("SELECT * FROM BIKEACCOUNT WHERE PHONE = ?", new String[]{topup});
+        int mbalance = cursor.getInt(cursor.getColumnIndex("BALANCE"));
+
         ContentValues contentValues = new ContentValues();
-        contentValues.put("username", username);
-        contentValues.put("phone", phone);
-        long result = myDB.insert("bikeaccount", null, contentValues);
-        if (result == 1) return false;
+        contentValues.put("BALANCE", topup+mbalance);
+        long result = myDB.update("BIKEACCOUNT", contentValues, "phone = ?", new String[]{topup});
+        if(result == -1) return false;
         else
             return true;
     }
 
+    public Cursor getrentalinfo(String phone) {
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        Cursor cursor = myDB.rawQuery("SELECT * FROM BIKEACCOUNT WHERE PHONE = ?", new String[]{phone});
+        return cursor;
+    }
 
+    public Boolean updaterentalno() {
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        Cursor cursor = myDB.rawQuery("SELECT * FROM BIKEACCOUNT WHERE PHONE = ?", new String[]{});
+        int mrentalno = cursor.getInt(cursor.getColumnIndex("RENTALNO"));
 
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("RENTALNO", 1+mrentalno);
+        long result = myDB.update("BIKEACCOUNT", contentValues, "phone = ?", new String[]{});
+        if(result == -1) return false;
+        else
+            return true;
+    }
+
+    public Boolean updaterentalhour(String time) {
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        Cursor cursor = myDB.rawQuery("SELECT * FROM BIKEACCOUNT WHERE PHONE = ?", new String[]{});
+        int mtime = cursor.getInt(cursor.getColumnIndex("RENTALHOUR"));
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("RENTALHOUR", time+mtime);
+        long result = myDB.update("BIKEACCOUNT", contentValues, "phone = ?", new String[]{});
+        if(result == -1) return false;
+        else
+            return true;
+    }
 
 }

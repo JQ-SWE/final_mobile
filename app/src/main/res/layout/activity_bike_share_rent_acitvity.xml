@@ -83,8 +83,7 @@
         android:layout_below="@+id/divider1"
         android:layout_marginStart="40dp"
         android:layout_marginTop="50dp"
-        android:text="Bike identifier"
-        android:textColor="#7A7171"
+        android:hint="Bike identifier"
         android:textSize="20dp" />
 
     <Button
