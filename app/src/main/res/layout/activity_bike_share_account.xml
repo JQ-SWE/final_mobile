@@ -23,19 +23,18 @@
         android:textColor="@color/white"
         android:textSize="30sp" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/BikeShare_account_back"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
-        android:src="@drawable/arrow"
-        android:background="@color/grey"/>
+        app:srcCompat="@drawable/abc_vector_test" />
 
     <ImageView
         android:id="@+id/BikeShare_imageView"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:layout_below="@+id/headline_bikeshare"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
@@ -92,7 +91,7 @@
         android:layout_marginLeft="150dp"
         android:layout_marginRight="150dp"
         android:layout_marginTop="-80dp"
-        android:text="24h"
+        android:text="24"
         android:textSize="20dp" />
 
     <TextView
@@ -103,7 +102,7 @@
         android:layout_marginLeft="150dp"
         android:layout_marginRight="150dp"
         android:layout_marginTop="-50dp"
-        android:text="Total rental hours"
+        android:text="Total rental hours(h)"
         android:textSize="15dp" />
 
 
@@ -117,7 +116,7 @@
         android:background="@color/grey" />
 
     <TextView
-        android:id="@+id/tv_totalKM"
+        android:id="@+id/tv_totalbalance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/numberOfRentals"
@@ -125,7 +124,7 @@
         android:layout_marginLeft="290dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="-80dp"
-        android:text="254km"
+        android:text="254"
         android:textSize="20dp" />
 
     <TextView
@@ -136,14 +135,14 @@
         android:layout_marginLeft="290dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="-50dp"
-        android:text="Total kilometers"
+        android:text="Total     balance($)"
         android:textSize="15dp" />
 
     <View
         android:id="@+id/rentalRecord"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="130dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_below="@+id/BikeShare_imageView"
@@ -183,22 +182,12 @@
         android:id="@+id/changeaccount"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="SWITCH ACCOUNT"
+        android:text="TOP UP"
         android:textSize="20dp"
         android:layout_below="@+id/rentalRecord"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="30dp"/>
 
-    <Button
-        android:id="@+id/cancelaccount"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="CANCEL ACCOUNT"
-        android:textSize="20dp"
-        android:layout_below="@+id/changeaccount"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>

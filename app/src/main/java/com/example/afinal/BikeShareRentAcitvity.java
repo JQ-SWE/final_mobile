@@ -35,7 +35,10 @@ public class BikeShareRentAcitvity extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String num = identifier.getText().toString();
+                Intent intent = new Intent(getApplicationContext(), BikeShareRecordActivity.class);
+                intent.putExtra("identifier", num);
+                startActivity(intent);
             }
         });
 

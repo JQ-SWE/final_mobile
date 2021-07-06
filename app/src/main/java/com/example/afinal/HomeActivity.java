@@ -71,7 +71,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         moveCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this,MoveCarActivity3.class);
+                Intent intent = new Intent(HomeActivity.this,MoveCarActivity1.class);
                 startActivity(intent);
             }
         });

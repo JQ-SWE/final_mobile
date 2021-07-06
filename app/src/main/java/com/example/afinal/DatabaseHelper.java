@@ -20,13 +20,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase myDB) {
         myDB.execSQL("CREATE TABLE USERS(certificateType TEXT, certificateNumber TEXT, name TEXT, phoneNumber TEXT primary key, location TEXT, password TEXT, securityQuestion TEXT, securityAnswer TEXT)");
-
+        myDB.execSQL("CREATE TABLE BIKEACCOUNT(username TEXT, phone TEXT primary key, RENTALNO TEXT, RENTALHOUR TEXT, BALANCE TEXT)");
     }
 
     //drop the table if already exist
     @Override
     public void onUpgrade(SQLiteDatabase myDB, int oldVersion, int newVersion) {
         myDB.execSQL("DROP TABLE IF EXISTS USERS");
+        myDB.execSQL("DROP TABLE IF EXISTS BIKEACCOUNT");
     }
 
     //to insert data
@@ -92,4 +93,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else
             return true;
     }
+
+    //FOR BIKEACCOUNT
+    public Boolean insertData(String username, String phone) {
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("username", username);
+        contentValues.put("phone", phone);
+        long result = myDB.insert("bikeaccount", null, contentValues);
+        if (result == 1) return false;
+        else
+            return true;
+    }
+
+
+
+
 }

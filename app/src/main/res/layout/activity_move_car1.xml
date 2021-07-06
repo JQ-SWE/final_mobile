@@ -40,15 +40,26 @@
         android:text="Time :"
         android:textSize="20dp" />
 
-    <EditText
-        android:id="@+id/et_movecar_time"
-        android:layout_width="match_parent"
+    <TextClock
+        android:id="@+id/tc_movecar_time"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="450dp"
-        android:ems="10"
-        android:inputType="time"/>
+        android:layout_marginTop="460dp"
+        android:textSize="20dp"
+        android:textColor="@android:color/secondary_text_light"
+        android:format24Hour="hh:mm:ss"/>
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="460dp"
+        android:textColor="@android:color/secondary_text_light"
+        android:textSize="20dp"/>
 
     <TextView
         android:id="@+id/tv_movecar_location"
@@ -67,9 +78,10 @@
         android:layout_marginStart="130dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="23dp"
-        android:layout_below="@+id/et_movecar_time"/>
+        android:layout_below="@+id/tc_movecar_time"/>
 
     <Button
+        android:id="@+id/movecar_request"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
         android:text="APPLY FOR MOVING THE CAR"
