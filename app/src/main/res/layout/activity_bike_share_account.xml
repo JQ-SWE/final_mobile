@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BikeShareAccountActivity">
+
+    <View
+        android:id="@+id/headline_bikeshare"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/grey" />
+
+    <TextView
+        android:id="@+id/tv_bikeshare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="monospace"
+        android:padding="25dp"
+        android:text="Bike Share"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/BikeShare_account_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        app:srcCompat="@drawable/abc_vector_test" />
+
+    <ImageView
+        android:id="@+id/BikeShare_imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_below="@+id/headline_bikeshare"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <View
+        android:id="@+id/numberOfRentals"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/BikeShare_imageView"
+        android:background="@color/grey" />
+
+    <TextView
+        android:id="@+id/tv_numberOfRentals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/numberOfRentals"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="290dp"
+        android:layout_marginTop="-80dp"
+        android:text="10"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/numberOfRentals"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="290dp"
+        android:layout_marginTop="-50dp"
+        android:text="Number of rentals"
+        android:textSize="15dp" />
+
+    <View
+        android:id="@+id/totalRentalHours"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="145dp"
+        android:layout_below="@+id/BikeShare_imageView"
+        android:background="@color/grey" />
+
+    <TextView
+        android:id="@+id/tv_totalRentalHours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/numberOfRentals"
+        android:gravity="center"
+        android:layout_marginLeft="150dp"
+        android:layout_marginRight="150dp"
+        android:layout_marginTop="-80dp"
+        android:text="24"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/numberOfRentals"
+        android:gravity="center"
+        android:layout_marginLeft="150dp"
+        android:layout_marginRight="150dp"
+        android:layout_marginTop="-50dp"
+        android:text="Total rental hours(h)"
+        android:textSize="15dp" />
+
+
+    <View
+        android:id="@+id/totalKM"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="280dp"
+        android:layout_below="@+id/BikeShare_imageView"
+        android:background="@color/grey" />
+
+    <TextView
+        android:id="@+id/tv_totalbalance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/numberOfRentals"
+        android:gravity="center"
+        android:layout_marginLeft="290dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="-80dp"
+        android:text="254"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/numberOfRentals"
+        android:gravity="center"
+        android:layout_marginLeft="290dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="-50dp"
+        android:text="Total     balance($)"
+        android:textSize="15dp" />
+
+    <View
+        android:id="@+id/rentalRecord"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/BikeShare_imageView"
+        android:background="@color/grey" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rentalRecord"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="-55dp"
+        android:text="Rental record"
+        android:textSize="25dp" />
+
+    <ImageView
+        android:id="@+id/BikeShare_imageView2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/rentalRecord"
+        android:layout_marginTop="-70dp"
+        android:layout_marginLeft="10dp"
+        app:srcCompat="@drawable/bicycle"
+        android:scaleX="0.8"
+        android:scaleY="0.8"/>
+
+    <ImageView
+        android:id="@+id/btn_rentalrecord"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:rotation="180"
+        android:layout_below="@+id/rentalRecord"
+        android:layout_marginTop="-60dp"
+        android:layout_marginLeft="330dp"
+        app:srcCompat="?attr/actionModeCloseDrawable" />
+
+    <Button
+        android:id="@+id/changeaccount"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="TOP UP"
+        android:textSize="20dp"
+        android:layout_below="@+id/rentalRecord"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"/>
+
+
+</RelativeLayout>

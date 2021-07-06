@@ -1,8 +1,6 @@
 package com.example.afinal;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.AppComponentFactory;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -11,11 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class FindPasswordActivity extends AppCompatActivity {
 
-    public EditText phone;
-    private EditText certificateno, answer;
+    private EditText answer, phone;
     private Button back, submit, getquestion;
     private TextView question;
     private DatabaseHelper DB;
@@ -25,7 +23,6 @@ public class FindPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_password);
 
-        certificateno = (EditText) findViewById(R.id.et_retrieve_certificatenumber);
         answer = (EditText) findViewById(R.id.et_retrieve_securityanswer);
         phone = (EditText) findViewById(R.id.et_retrieve_phone);
         back = (Button) findViewById(R.id.btn_retrieve_back);
@@ -38,16 +35,20 @@ public class FindPasswordActivity extends AppCompatActivity {
         getquestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String Phone = phone.getText().toString();
 
                 Boolean checkuser = DB.checkUser(Phone);
-                if (!checkuser){
+                if (!checkuser) {
                     Toast.makeText(FindPasswordActivity.this, "User not found", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(FindPasswordActivity.this, "User found", Toast.LENGTH_SHORT).show();
-                    //String Question = DB.getQuestion(Phone);
-                    question.setText("Question");
+                    Cursor cursor = DB.getQuestion(Phone);
+                    StringBuilder stringBuilder = new StringBuilder();
+                    while (cursor.moveToNext()) {
+                        stringBuilder.append(cursor.getString(6));
+                        question.setText(stringBuilder);
+                    }
                 }
             }
         });
@@ -65,23 +66,22 @@ public class FindPasswordActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String Phone = phone.getText().toString();
-                String certno = certificateno.getText().toString();
                 String Answer = answer.getText().toString();
 
-                if (certno.equals("")||Answer.equals(""))
+                if (Answer.equals(""))
                     Toast.makeText(FindPasswordActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else{
-                    Boolean checkuserinfo = DB.checkCertnoAnswer(Phone, certno, Answer);
-                    if (checkuserinfo == true) {
-                        Toast.makeText(FindPasswordActivity.this, "Authentication Success", Toast.LENGTH_SHORT).show();
+                else {
+                    Boolean checkanswer = DB.checkUserAnswer(Phone, Answer);
+                    if (checkanswer == true) {
+                        Toast.makeText(FindPasswordActivity.this, "Successful Authentication", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                        intent.putExtra("userphone", Phone);
                         startActivity(intent);
-                    }else {
-                        Toast.makeText(FindPasswordActivity.this, "Authentication Failure", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(FindPasswordActivity.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
         });
-
     }
 }
