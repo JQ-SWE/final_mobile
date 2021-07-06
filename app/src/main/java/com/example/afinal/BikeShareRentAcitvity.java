@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -18,7 +19,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class BikeShareRentAcitvity extends AppCompatActivity {
 
-    ImageButton btScan, back;
+    ImageView btScan, back;
     Button confirm;
     EditText identifier;
 
@@ -28,7 +29,7 @@ public class BikeShareRentAcitvity extends AppCompatActivity {
         setContentView(R.layout.activity_bike_share_rent_acitvity);
 
         btScan = (ImageButton) findViewById(R.id.btn_scan);
-        back = (ImageButton) findViewById(R.id.BikeShare_rent_back);
+        back = (ImageView) findViewById(R.id.BikeShare_rent_back);
         confirm = (Button) findViewById(R.id.bikeconfirm);
         identifier = (EditText) findViewById(R.id.et_bikeidentifier);
 

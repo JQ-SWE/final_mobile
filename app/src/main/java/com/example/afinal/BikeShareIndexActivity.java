@@ -13,12 +13,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class BikeShareIndexActivity extends AppCompatActivity {
 
     Button service, rent, account;
-    ImageButton back;
+    ImageView back;
 
     private static final int REQUEST_CALL = 1;
 
@@ -30,7 +31,7 @@ public class BikeShareIndexActivity extends AppCompatActivity {
         service = (Button) findViewById(R.id.index_service);
         rent = (Button) findViewById(R.id.index_rent);
         account = (Button) findViewById(R.id.index_account);
-        back = (ImageButton) findViewById(R.id.BikeShare_index_back);
+        back = (ImageView) findViewById(R.id.BikeShare_index_back);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
