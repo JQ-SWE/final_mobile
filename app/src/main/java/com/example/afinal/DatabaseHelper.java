@@ -20,13 +20,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase myDB) {
         myDB.execSQL("CREATE TABLE USERS(certificateType TEXT, certificateNumber TEXT, name TEXT, phoneNumber TEXT primary key, location TEXT, password TEXT, securityQuestion TEXT, securityAnswer TEXT)");
-
+        myDB.execSQL("CREATE TABLE BIKEACCOUNT(username TEXT, phone TEXT primary key, RENTALNO TEXT, RENTALHOUR TEXT, BALANCE TEXT)");
     }
 
     //drop the table if already exist
     @Override
     public void onUpgrade(SQLiteDatabase myDB, int oldVersion, int newVersion) {
         myDB.execSQL("DROP TABLE IF EXISTS USERS");
+        myDB.execSQL("DROP TABLE IF EXISTS BIKEACCOUNT");
     }
 
     //to insert data
@@ -67,34 +68,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    public Cursor getPhoneAnswer(String phoneNumber) {
-        SQLiteDatabase myDB = this.getReadableDatabase();
-        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phoneNumber});
-        return cursor;
-    }
-
-    public Cursor getPhoneCertno(String phoneNumber) {
-        SQLiteDatabase myDB = this.getReadableDatabase();
-        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phoneNumber});
-        return cursor;
-    }
-
-
-    public boolean changepassword(String phone, String password) {
+    public Boolean checkUserAnswer(String phoneNumber, String answer) {
         SQLiteDatabase myDB = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("password", password);
-        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phone});
-        if (cursor.getCount() > 0) {
-            long result = myDB.update("USERS", contentValues, "PHONENUMBER=?", new String[]{phone});
-            if (result == -1) {
-                return false;
-            } else {
-                return true;
-            }
-        } else {
+        Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ? AND securityAnswer = ?", new String[]{phoneNumber, answer});
+        if (cursor.getCount() > 0)
+            return true;
+        else
             return false;
-        }
     }
 
     public Cursor getQuestion(String phoneNumber) {
@@ -102,4 +82,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = myDB.rawQuery("SELECT * FROM USERS WHERE PHONENUMBER = ?", new String[]{phoneNumber});
         return cursor;
     }
+
+    public Boolean updatePassword(String phoneNumber, String password)
+    {
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("password", password);
+        long result = myDB.update("users", contentValues, "phoneNumber = ?", new String[] {phoneNumber});
+        if(result == -1) return false;
+        else
+            return true;
+    }
+
+    //FOR BIKEACCOUNT
+    public Boolean insertData(String username, String phone) {
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("username", username);
+        contentValues.put("phone", phone);
+        long result = myDB.insert("bikeaccount", null, contentValues);
+        if (result == 1) return false;
+        else
+            return true;
+    }
+
+
+
+
 }

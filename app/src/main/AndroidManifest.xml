@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -14,13 +17,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Final">
+        <activity android:name=".MoveCarActivity4"></activity>
+        <activity android:name=".RecordDatabaseHelper" />
+        <activity android:name=".BikeShareRecordActivity" />
+        <activity android:name=".BikeShareIndexActivity" />
+        <activity android:name=".MoveCarActivity3" />
+        <activity android:name=".MoveCarActivity2" />
+        <activity android:name=".MoveCarActivity1" />
+        <activity android:name=".BikeShareRentAcitvity" />
+        <activity android:name=".BikeShareAccountActivity" />
+        <activity android:name=".AddNewCar" />
+        <activity android:name=".ManageMyCar" />
+        <activity android:name=".UserProfile" />
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <activity android:name=".NewTripTest" />
         <activity android:name=".CitiBikeActivity"></activity>
         <activity
             android:name=".RoadCondition"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
-        <activity
-            android:name=".NewTripTest"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
+
         <activity android:name=".HomeActivity" />
         <activity android:name=".SubwayActivity" />
         <activity android:name=".MainActivity">
@@ -35,6 +61,11 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity" />
 
+        <activity
+            android:name=".Capture"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -46,6 +77,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBrz7h0iz_24QhvTlZIdTp89BS1Fx860M0" />
+
     </application>
 
 </manifest>
+
+

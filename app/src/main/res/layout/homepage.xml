@@ -168,6 +168,13 @@
                             android:padding="10dp"
                             android:text="Citi Bike"
                             android:textSize="20sp" />
+
+                        <Button
+                            android:id="@+id/BikeShare"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00FFFFFF" />
+
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -198,6 +205,11 @@
                             android:padding="10dp"
                             android:text="Move The Car"
                             android:textSize="20sp" />
+                        <Button
+                            android:id="@+id/MoveCar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00FFFFFF" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
@@ -240,6 +252,11 @@
                             android:padding="10dp"
                             android:text="Manage My Car"
                             android:textSize="20sp" />
+                        <Button
+                            android:id="@+id/ManageMyCar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00FFFFFF" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
