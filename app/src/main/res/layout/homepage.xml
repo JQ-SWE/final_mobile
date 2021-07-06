@@ -246,6 +246,11 @@
                             android:padding="10dp"
                             android:text="Manage My Car"
                             android:textSize="20sp" />
+                        <Button
+                            android:id="@+id/ManageMyCar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00FFFFFF" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 

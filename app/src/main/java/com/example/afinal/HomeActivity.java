@@ -22,7 +22,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    Button newTripFunc, bikeShare, moveCar;
+    Button newTripFunc, bikeShare, moveCar,manageCar;
+
 
 
     @Override
@@ -40,6 +41,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         newTripFunc = findViewById(R.id.NewTrip);
         bikeShare = findViewById(R.id.BikeShare);
         moveCar = findViewById(R.id.MoveCar);
+        manageCar = findViewById(R.id.ManageMyCar);
+
 
         //toolbar
         setSupportActionBar(toolbar);
@@ -60,6 +63,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+
         bikeShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +71,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
+
+        manageCar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this,ManageMyCar.class);
+                startActivity(intent);
+            }
+        });
+
 
         moveCar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +109,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.NavLogout:
                 Intent intent=new Intent(HomeActivity.this,LoginActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.NavProfile:
+                Intent intent2=new Intent(HomeActivity.this,UserProfile.class);
+                startActivity(intent2);
                 break;
         }
         return true;
