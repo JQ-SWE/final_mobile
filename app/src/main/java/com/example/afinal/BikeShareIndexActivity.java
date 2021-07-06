@@ -23,6 +23,9 @@ public class BikeShareIndexActivity extends AppCompatActivity {
 
     private static final int REQUEST_CALL = 1;
 
+    //Intent intent = getIntent();
+    //String phone = intent.getStringExtra("PHONE");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +48,7 @@ public class BikeShareIndexActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), BikeShareRentAcitvity.class);
+                //intent.putExtra("PHONE", phone);
                 startActivity(intent);
             }
         });
@@ -53,6 +57,7 @@ public class BikeShareIndexActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), BikeShareAccountActivity.class);
+                //intent.putExtra("PHONE", phone);
                 startActivity(intent);
             }
         });

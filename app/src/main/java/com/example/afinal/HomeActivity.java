@@ -25,7 +25,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Button newTripFunc, bikeShare, moveCar,manageCar;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
