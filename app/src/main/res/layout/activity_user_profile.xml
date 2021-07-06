@@ -141,7 +141,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#8BC34A"
-                    android:drawableLeft="@drawable/user"
+                    android:drawableLeft="@drawable/user_small"
                     android:drawablePadding="10dp"
                     android:text="Wang Rongyi" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -156,7 +156,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#8BC34A"
-                    android:drawableLeft="@drawable/phone"
+                    android:drawableLeft="@drawable/phone_small"
                     android:drawablePadding="10dp"
                     android:text="+123-456-789" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -171,7 +171,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#8BC34A"
-                    android:drawableLeft="@drawable/email"
+                    android:drawableLeft="@drawable/email_small"
                     android:drawablePadding="10dp"
                     android:text="abcwang@gmail.com" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -186,7 +186,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#8BC34A"
-                    android:drawableLeft="@drawable/location"
+                    android:drawableLeft="@drawable/location_small"
                     android:drawablePadding="10dp"
                     android:text="New York, United States" />
             </com.google.android.material.textfield.TextInputLayout>
