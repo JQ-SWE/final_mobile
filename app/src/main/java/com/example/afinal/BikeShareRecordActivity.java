@@ -24,13 +24,9 @@ public class BikeShareRecordActivity extends AppCompatActivity {
     TextView bikenum, starttime, period, cost;
     Button calculate, checkout;
 
-    //for popup
-    Button confirm, topup;
-    TextView balance, cost_2;
-    Dialog mdialog;
-
     Timer timer;
     TimerTask timerTask;
+
     Double time = 0.0;
 
     @Override
@@ -46,19 +42,11 @@ public class BikeShareRecordActivity extends AppCompatActivity {
         calculate = (Button) findViewById(R.id.bikesharerecord_calculate);
         checkout = (Button) findViewById(R.id.bikesharerecord_checkout);
 
-        //for pop up
-        confirm = (Button) findViewById(R.id.checkout_confirm);
-        topup = (Button) findViewById(R.id.checkout_topup);
-        balance = (TextView) findViewById(R.id.checkout_balance);
-        cost_2 = (TextView) findViewById(R.id.checkout_cost);
-        mdialog = new Dialog(this);
-
         Intent intent = getIntent();
-        String Identifier = intent.getStringExtra("identifier");
-        String Starttime = intent.getStringExtra("datetime");
-
-        bikenum.setText(Identifier);
-        starttime.setText(Starttime);
+        String balance = intent.getStringExtra("balance");
+        bikenum.setText(intent.getStringExtra("identifier"));
+        starttime.setText(intent.getStringExtra("datetime"));
+        String phone = intent.getStringExtra("phone");
 
         timer = new Timer();
         timerTask = new TimerTask() {
@@ -74,6 +62,7 @@ public class BikeShareRecordActivity extends AppCompatActivity {
                 });
             }
         };
+
         timer.scheduleAtFixedRate(timerTask, 0,1000);
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -99,31 +88,25 @@ public class BikeShareRecordActivity extends AppCompatActivity {
                 } else{
                     COST = 3 * 2 * hours + 3;
                 }
-                cost.setText("$ " + COST);
-                cost_2.setText("$ " + COST);
+
+                String totalcost = String.valueOf(COST);
+                cost.setText(totalcost);
             }
         });
 
         checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mdialog.setContentView(R.layout.bike_checkout);
-                mdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                String totalcost = cost.getText().toString();
+
+                Intent intent = new Intent(BikeShareRecordActivity.this,CheckoutActivity.class);
+                intent.putExtra("phone", phone);
+                intent.putExtra("balance", balance);
+                intent.putExtra("cost", totalcost);
+                startActivity(intent);
             }
-        });
 
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        topup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
         });
 
     }
@@ -139,4 +122,5 @@ public class BikeShareRecordActivity extends AppCompatActivity {
     private String formatTime(int seconds, int minutes, int hours) {
         return String.format("%02d", hours) + " : " + String.format("%02d", minutes) + " : " + String.format("%02d", seconds);
     }
+
 }

@@ -19,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Final">
-        <activity android:name=".CarSuccess"></activity>
+        <activity android:name=".CheckoutActivity"></activity>
+        <activity android:name=".TopUpActivity" />
+        <activity android:name=".CarSuccess" />
         <activity android:name=".MoveCarActivity4" />
         <activity android:name=".BikeShareRecordActivity" />
         <activity android:name=".BikeShareIndexActivity" />
