@@ -31,4 +31,118 @@
         android:layout_marginStart="10dp"
         app:srcCompat="@drawable/abc_vector_test" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bike Identifier :"
+        android:textSize="20dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/bikesharerecord_identifier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginStart="165dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Starting time :"
+        android:textSize="20dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/bikesharerecord_starttime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="160dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time Period :"
+        android:textSize="20dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/bikesharerecord_period"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginStart="150dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Cost($) :"
+        android:textSize="20dp"
+        android:layout_marginTop="320dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/bikesharerecord_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(please calculate)"
+        android:textSize="20dp"
+        android:layout_marginTop="320dp"
+        android:layout_marginStart="160dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="* Please note that if the bike is used for less than 30 minutes, it will be charged as 30 minutes."
+        android:textSize="20dp"
+        android:layout_marginTop="420dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="* Cost formula: $3 per 30 minutes"
+        android:textSize="20dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp" />
+
+    <Button
+        android:id="@+id/bikesharerecord_calculate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CALCULATE TOTAL COST"
+        android:textSize="20dp"
+        android:layout_marginTop="550dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
+
+    <Button
+        android:id="@+id/bikesharerecord_checkout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CHECK OUT"
+        android:textSize="20dp"
+        android:layout_marginTop="600dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="?android:attr/listDivider"
+        android:layout_marginTop="380dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
+
 </RelativeLayout>

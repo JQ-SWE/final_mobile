@@ -41,6 +41,7 @@ dependencies {
     implementation 'com.karumi:dexter:6.2.3'
     implementation 'com.journeyapps:zxing-android-embedded:4.2.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
     implementation files('D:\\course\\mobile_app\\final_mobile\\app\\libs\\heresdk-explore-android-4.7.6.0.5777.aar')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
