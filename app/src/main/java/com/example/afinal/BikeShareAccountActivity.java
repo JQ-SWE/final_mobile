@@ -21,10 +21,9 @@ import org.w3c.dom.Text;
 
 public class BikeShareAccountActivity extends AppCompatActivity {
 
-    ImageView back, record;
+    ImageView back;
     TextView name, rentalno, rentalhour, balance;
     Button topup;
-    EditText bank;
     private DatabaseHelper DB;
 
     @Override
@@ -37,7 +36,6 @@ public class BikeShareAccountActivity extends AppCompatActivity {
         rentalno = (TextView) findViewById(R.id.tv_numberOfRentals);
         rentalhour = (TextView) findViewById(R.id.tv_totalRentalHours);
         balance = (TextView) findViewById(R.id.tv_totalbalance);
-        record = (ImageView) findViewById(R.id.btn_rentalrecord);
         topup = (Button) findViewById(R.id.Account_topup);
 
         Intent intent = getIntent();
@@ -79,14 +77,6 @@ public class BikeShareAccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), BikeShareIndexActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        record.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BikeShareRecordActivity.class);
                 startActivity(intent);
             }
         });
