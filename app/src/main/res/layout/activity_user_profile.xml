@@ -13,10 +13,9 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="280dp"
             android:background="#8BC34A"
             android:padding="20dp">
-
 
             <ImageView
                 android:id="@+id/user_profile"
@@ -40,7 +39,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-100dp"
+            android:layout_marginTop="-130dp"
             android:padding="20dp">
 
             <com.google.android.material.card.MaterialCardView
@@ -79,7 +78,7 @@
                         android:layout_below="@+id/payment_label"
                         android:layout_centerHorizontal="true"
                         android:includeFontPadding="false"
-                        android:text="Balance"
+                        android:text="Balance($)"
                         android:textSize="14sp" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -110,7 +109,7 @@
                         android:layout_centerInParent="true"
                         android:fontFamily="sans-serif-black"
                         android:includeFontPadding="false"
-                        android:text="14"
+                        android:text="0"
                         android:textSize="20sp" />
 
                     <TextView
@@ -131,65 +130,120 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="Full Name">
+                android:layout_height="60dp"
+                android:background="#8BC34A">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/user_small" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#8BC34A"
-                    android:drawableLeft="@drawable/user_small"
-                    android:drawablePadding="10dp"
-                    android:text="Wang Rongyi" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:text="Full Name"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="5dp"/>
 
-            <com.google.android.material.textfield.TextInputLayout
+                <TextView
+                    android:id="@+id/profilename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="name"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="25dp"
+                    android:textSize="20dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="Phone Number">
+                android:layout_height="60dp"
+                android:background="#8BC34A">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/phone_small" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#8BC34A"
-                    android:drawableLeft="@drawable/phone_small"
-                    android:drawablePadding="10dp"
-                    android:text="+123-456-789" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:text="Phone Number"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="5dp"/>
 
-            <com.google.android.material.textfield.TextInputLayout
+                <TextView
+                    android:id="@+id/profilephone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="name"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="25dp"
+                    android:textSize="20dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="E-mail">
+                android:layout_height="60dp"
+                android:background="#8BC34A">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/email_small" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#8BC34A"
-                    android:drawableLeft="@drawable/email_small"
-                    android:drawablePadding="10dp"
-                    android:text="abcwang@gmail.com" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:text="Possport / Certificate Number"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="5dp"/>
 
-            <com.google.android.material.textfield.TextInputLayout
+                <TextView
+                    android:id="@+id/profilepassport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="name"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="25dp"
+                    android:textSize="20dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:hint="Location">
+                android:layout_height="60dp"
+                android:background="#8BC34A">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/location_small" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#8BC34A"
-                    android:drawableLeft="@drawable/location_small"
-                    android:drawablePadding="10dp"
-                    android:text="New York, United States" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:text="Location"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:id="@+id/profilelocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="name"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="25dp"
+                    android:textSize="20dp"/>
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/updateButton"
@@ -197,7 +251,8 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#8BC34A"
                 android:fontFamily="sans-serif-black"
-                android:text="Change Password" />
+                android:text="Change Password"
+                android:layout_marginTop="5dp"/>
 
         </LinearLayout>
     </LinearLayout>

@@ -9,11 +9,6 @@
             android:title="Profile" />
 
         <item
-            android:id="@+id/NavStore"
-            android:icon="@drawable/store_icon"
-            android:title="Store" />
-
-        <item
             android:id="@+id/NavLogout"
             android:icon="@drawable/logout_icon"
             android:title="Logout" />
