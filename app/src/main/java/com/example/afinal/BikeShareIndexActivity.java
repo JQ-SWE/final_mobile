@@ -44,16 +44,24 @@ public class BikeShareIndexActivity extends AppCompatActivity {
         rent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BikeShareRentAcitvity.class);
-                startActivity(intent);
+                Intent intent = getIntent();
+                String phone = intent.getStringExtra("phone");
+
+                Intent intent1 = new Intent(getApplicationContext(), BikeShareRentAcitvity.class);
+                intent1.putExtra("phone", phone);
+                startActivity(intent1);
             }
         });
 
         account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BikeShareAccountActivity.class);
-                startActivity(intent);
+                Intent intent = getIntent();
+                String phone = intent.getStringExtra("phone");
+
+                Intent intent1 = new Intent(getApplicationContext(), BikeShareAccountActivity.class);
+                intent1.putExtra("phone", phone);
+                startActivity(intent1);
             }
         });
 

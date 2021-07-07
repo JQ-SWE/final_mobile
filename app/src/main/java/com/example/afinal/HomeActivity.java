@@ -24,8 +24,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     Button newTripFunc, bikeShare, moveCar,manageCar;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,8 +65,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         bikeShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this,BikeShareIndexActivity.class);
-                startActivity(intent);
+
+                Intent intent = getIntent();
+                String phone = intent.getStringExtra("phone");
+
+                Intent intent1 = new Intent(HomeActivity.this,BikeShareIndexActivity.class);
+                intent1.putExtra("phone", phone);
+                startActivity(intent1);
             }
         });
 

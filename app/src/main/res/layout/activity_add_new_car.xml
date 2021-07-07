@@ -26,7 +26,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="619dp">
+        android:layout_height="200dp">
         <EditText
             android:id="@+id/license_number"
             android:layout_width="match_parent"
@@ -43,8 +43,62 @@
             android:layout_marginTop="130dp"
             android:layout_marginEnd="30dp"
             android:hint="Owner's ID Number" />
-
-
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:src="@drawable/photo"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/photo_example"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/newCarCapture"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="#8BC34A"
+            android:text="CAPTURE"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/newCarChoose"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="#8BC34A"
+            android:text="CHOOSE FROM GALLERY"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/newCarConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="#8BC34A"
+            android:text="CONFIRM"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
 
 </LinearLayout>
