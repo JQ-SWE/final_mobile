@@ -27,7 +27,6 @@
         <activity android:name=".CarSuccess" />
         <activity android:name=".MoveCarActivity4" />
         <activity android:name=".BikeShareRecordActivity" />
-        <activity android:name=".BikeShareIndexActivity" />
         <activity android:name=".MoveCarActivity3" />
         <activity android:name=".MoveCarActivity2" />
         <activity android:name=".MoveCarActivity1" />
@@ -36,7 +35,8 @@
         <activity android:name=".AddNewCar" />
         <activity android:name=".ManageMyCar" />
         <activity android:name=".UserProfile" />
-  
+        <activity android:name=".NewTripTest"/>
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -45,10 +45,6 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-        <activity android:name=".NewTripTest" />
         <activity android:name=".CitiBikeActivity" />
         <activity
             android:name=".RoadCondition"
@@ -86,7 +82,6 @@
 
         <meta-data android:name="com.here.sdk.access_key_id" android:value="YziCm0SolxnJIvzqDY_hEQ"/>
         <meta-data android:name="com.here.sdk.access_key_secret" android:value="CyMI5EtbIHaqnL8vfS6due_h6RlUfibV2Q30bPho6PzXCdXRWAGn9TXxETX6GQjxmi3UKgBIRgBf1TQ36Kas4Q"/>
-
     </application>
 
 </manifest>

@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,6 +18,7 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +27,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +62,7 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
     GoogleMap MGoogleMap;
     ImageView Search;
     EditText inputLocation;
+    EditText destination;
     Button subway;
     Button bus;
     private boolean mIsRestore;
@@ -70,6 +74,7 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_new_trip_test);
         Search = findViewById(R.id.SearchIcon);
         inputLocation = findViewById(R.id.inputLocation);
+        destination = findViewById(R.id.inputDestination);
         subway = findViewById(R.id.Subway);
         bus = findViewById(R.id.Bus);
         mIsRestore = savedInstanceState != null;
@@ -86,9 +91,21 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
                 Toast.makeText(this, "GooglePlay Services Not Available", Toast.LENGTH_SHORT).show();
             }
         }
-        Search.setOnClickListener(this::geoLocate);
+        Search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String sSource = inputLocation.getText().toString().trim();
+                String sDestination = destination.getText().toString().trim();
 
-    }
+                if(sSource.equals("") && sDestination.equals("")){
+                    Toast.makeText(getApplicationContext(),
+                            "Enter both location", Toast.LENGTH_SHORT).show();
+                }else{
+                    DisplayTrack(sSource,sDestination);
+            }
+        }});
+
+        }
 
     private void geoLocate(View view) {
 
@@ -346,5 +363,22 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
         mClusterManager.addItems(items);
     }
 
-}
+
+
+    private void DisplayTrack(String sSource, String sDestination) {
+        try{
+            Uri uri = Uri.parse("https://www.google.co.in/maps/dir/" + sSource + "/" +sDestination);
+            Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+            intent.setPackage("com.google.android.apps.maps");
+
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }catch(ActivityNotFoundException e){
+            Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps.maps");
+            Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+    }
+    }
 

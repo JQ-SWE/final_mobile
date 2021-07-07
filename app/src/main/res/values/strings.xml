@@ -6,13 +6,11 @@
     <string name="Google_Maps_API_key">AIzaSyBrz7h0iz_24QhvTlZIdTp89BS1Fx860M0</string>
 
     <string-array name="spinner_city">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
+        <item>The Bronx</item>
+        <item>Brooklyn</item>
+        <item>Manhattan</item>
+        <item>Queens</item>
+        <item>Staten Island</item>
     </string-array>
 
     <string-array name="spinner_certificatetype">

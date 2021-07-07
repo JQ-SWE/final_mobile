@@ -10,8 +10,8 @@
     <View
         android:id="@+id/headline_bikeshare"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:background="@color/grey"
+        android:layout_height="50dp"
+        android:background="#8BC34A"
         app:layout_constraintBottom_toTopOf="@+id/CitiBikeContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,25 +22,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:fontFamily="monospace"
-        android:padding="25dp"
         android:text="Bike Share"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:fontFamily="sans-serif-black"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="@+id/headline_bikeshare"
         app:layout_constraintEnd_toEndOf="@+id/headline_bikeshare"
         app:layout_constraintStart_toStartOf="@+id/headline_bikeshare"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/BikeShare_index_back"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/headline_bikeshare"
-        app:layout_constraintEnd_toStartOf="@+id/tv_bikeshare_rent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/headline_bikeshare"
-        app:srcCompat="@drawable/abc_vector_test" />
 
     //google map container
 
@@ -63,6 +53,7 @@
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="30dp"
             android:text="Rent"
+            android:backgroundTint="#8BC34A"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/Account"
             app:layout_constraintStart_toEndOf="@+id/Service"
@@ -77,6 +68,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginBottom="30dp"
             android:text="Service"
+            android:backgroundTint="#8BC34A"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/Rent"
             app:layout_constraintHorizontal_bias="0.352"
@@ -93,6 +85,7 @@
             android:layout_marginRight="30dp"
             android:layout_marginBottom="30dp"
             android:text="Account"
+            android:backgroundTint="#8BC34A"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/Rent"
