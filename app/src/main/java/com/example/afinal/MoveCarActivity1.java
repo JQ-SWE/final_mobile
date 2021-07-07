@@ -18,7 +18,7 @@ public class MoveCarActivity1 extends AppCompatActivity {
 
     ImageView back;
     Button request;
-    TextView date;
+    TextView date, location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +28,12 @@ public class MoveCarActivity1 extends AppCompatActivity {
         back = (ImageView) findViewById(R.id.movecar1_back);
         request = (Button) findViewById(R.id.movecar_request);
         date = (TextView) findViewById(R.id.tv_date);
+        location = (TextView) findViewById(R.id.et_movecar_location);
 
         Calendar calendar = Calendar.getInstance();
         String curdate = DateFormat.getDateInstance().format(calendar.getTime());
         date.setText(curdate);
+        location.setText("location");
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

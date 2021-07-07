@@ -49,13 +49,17 @@ public class SignUpActivity extends AppCompatActivity {
                 String question = securityquestion.getText().toString();
                 String answer = securityanswer.getText().toString();
 
+                int rentalno = 0;
+                int rentalhour = 0;
+                int balance = 0;
+
                 if (phone.equals("") || pass.equals("") || repass.equals(""))
                     Toast.makeText(SignUpActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 else {
                     if (pass.equals(repass)) {
                         Boolean checkuser = DB.checkUser(phone);
                         if (!checkuser) {
-                            Boolean insert = DB.insertData(certtype, certnumber, Name, phone, Location, pass, question, answer);
+                            Boolean insert = DB.insertData(certtype, certnumber, Name, phone, Location, pass, question, answer, rentalno, rentalhour, balance);
                             if (insert) {
                                 Toast.makeText(SignUpActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);

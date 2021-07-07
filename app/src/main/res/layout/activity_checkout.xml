@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckoutActivity">
+
+    <View
+        android:id="@+id/headline_bikeshare"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/grey"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_bikeshare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="monospace"
+        android:padding="25dp"
+        android:text="Checkout"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/BikeShare_checkout_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        app:srcCompat="@drawable/abc_vector_test" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bill info"
+        android:textSize="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your balance($) : "
+        android:textSize="25dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="200dp"/>
+
+    <TextView
+        android:id="@+id/checkout_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:layout_marginStart="222dp"
+        android:layout_marginTop="200dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total cost($) : "
+        android:textSize="25dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="300dp"/>
+
+    <TextView
+        android:id="@+id/checkout_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="300dp"/>
+
+    <Button
+        android:id="@+id/checkout_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="CONFIRM"
+        android:textSize="25dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="580dp"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

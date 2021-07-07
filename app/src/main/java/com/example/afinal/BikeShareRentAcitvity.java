@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -13,10 +14,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,9 +32,9 @@ public class BikeShareRentAcitvity extends AppCompatActivity {
     ImageView btScan, back;
     Button confirm;
     EditText identifier;
+    TextView balance, test;
+    private DatabaseHelper DB;
 
-    //Intent intent = getIntent();
-    //String phone = intent.getStringExtra("PHONE");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,21 @@ public class BikeShareRentAcitvity extends AppCompatActivity {
         back = (ImageView) findViewById(R.id.BikeShare_rent_back);
         confirm = (Button) findViewById(R.id.bikeconfirm);
         identifier = (EditText) findViewById(R.id.et_bikeidentifier);
+        balance = (TextView) findViewById(R.id.rentbalance);
+        test = findViewById(R.id.rentno);
+
+        Intent intent = getIntent();
+        String phone = intent.getStringExtra("phone");
+
+        DB = new DatabaseHelper(this);
+
+        Cursor cursor_balance = DB.getrentalinfo(phone);
+        StringBuilder stringBuilder_balance = new StringBuilder();
+        while (cursor_balance .moveToNext()) {
+            stringBuilder_balance.append(cursor_balance.getString(10));
+            balance.setText(stringBuilder_balance);
+        }
+        String Totalbalance = balance.getText().toString();
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,9 +70,11 @@ public class BikeShareRentAcitvity extends AppCompatActivity {
 
                 String Identifier = identifier.getText().toString();
 
-                Intent intent = new Intent(getApplicationContext(), BikeShareRecordActivity.class);
-                //intent.putExtra("identifier", Identifier);
-                //intent.putExtra("datetime", datetime);
+                Intent intent = new Intent(BikeShareRentAcitvity.this,BikeShareRecordActivity.class);
+                intent.putExtra("phone", phone);
+                intent.putExtra("balance", Totalbalance);
+                intent.putExtra("identifier", Identifier);
+                intent.putExtra("datetime", datetime);
                 startActivity(intent);
             }
         });
