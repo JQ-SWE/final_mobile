@@ -118,6 +118,12 @@
                             android:text="Road Condition"
                             android:textSize="20sp" />
 
+                        <Button
+                            android:id="@+id/RoadCondition"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00FFFFFF" />
+
                     </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -145,7 +151,7 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/BikeShareIcon"
+                            android:id="@+id/citiBikeIcon"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_centerHorizontal="true"
@@ -154,17 +160,17 @@
                             android:src="@drawable/bike_share_icon" />
 
                         <TextView
-                            android:id="@+id/BikeShareText"
+                            android:id="@+id/CitiBikeText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/BikeShareIcon"
+                            android:layout_below="@id/citiBikeIcon"
                             android:layout_centerHorizontal="true"
                             android:padding="10dp"
-                            android:text="Bike Share"
+                            android:text="Citi Bike"
                             android:textSize="20sp" />
 
                         <Button
-                            android:id="@+id/BikeShare"
+                            android:id="@+id/CitiBike"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="#00FFFFFF" />

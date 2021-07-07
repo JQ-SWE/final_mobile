@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "139513896215",
+    "project_id": "androidstudioproject-316606",
+    "storage_bucket": "androidstudioproject-316606.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139513896215:android:3e48b3e48df03f65a36b52",
+        "android_client_info": {
+          "package_name": "com.example.meltraffic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "139513896215-rfkh6mvobtpici5c4v44mqrpugpookmo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWn6uG5dEcmQPf8Ed7BjSMJEn403LAcuc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "139513896215-rfkh6mvobtpici5c4v44mqrpugpookmo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
