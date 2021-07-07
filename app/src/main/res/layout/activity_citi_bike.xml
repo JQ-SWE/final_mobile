@@ -7,6 +7,40 @@
     android:orientation="horizontal"
     tools:context=".CitiBikeActivity">
 
+    <View
+        android:id="@+id/headline_bikeshare"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toTopOf="@+id/CitiBikeContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_bikeshare_rent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="monospace"
+        android:padding="25dp"
+        android:text="Bike Share"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/headline_bikeshare"
+        app:layout_constraintEnd_toEndOf="@+id/headline_bikeshare"
+        app:layout_constraintStart_toStartOf="@+id/headline_bikeshare"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/BikeShare_index_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/headline_bikeshare"
+        app:layout_constraintEnd_toStartOf="@+id/tv_bikeshare_rent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/headline_bikeshare"
+        app:srcCompat="@drawable/abc_vector_test" />
 
     //google map container
 
@@ -16,12 +50,13 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/headline_bikeshare">
 
 
         <Button
-            android:id="@+id/Rent"
+            android:id="@+id/index_rent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
@@ -35,7 +70,7 @@
             app:layout_constraintVertical_bias="0.927" />
 
         <Button
-            android:id="@+id/Service"
+            android:id="@+id/index_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|left"
@@ -50,7 +85,7 @@
             app:layout_constraintVertical_bias="0.926" />
 
         <Button
-            android:id="@+id/Account"
+            android:id="@+id/index_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 

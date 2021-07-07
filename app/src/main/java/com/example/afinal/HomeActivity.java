@@ -22,7 +22,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    Button newTripFunc, bikeShare, moveCar,manageCar;
+    Button newTripFunc, citiBikeFunc, moveCar,manageCar;
+    Button roadConditionFunc;
 
 
 
@@ -39,9 +40,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.NavView);
         toolbar = findViewById(R.id.HomeToolBar);
         newTripFunc = findViewById(R.id.NewTrip);
-        bikeShare = findViewById(R.id.BikeShare);
+        citiBikeFunc = findViewById(R.id.CitiBike);
         moveCar = findViewById(R.id.MoveCar);
         manageCar = findViewById(R.id.ManageMyCar);
+        roadConditionFunc = findViewById(R.id.RoadCondition);
 
 
         //toolbar
@@ -64,10 +66,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
 
 
-        bikeShare.setOnClickListener(new View.OnClickListener() {
+        citiBikeFunc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this,BikeShareIndexActivity.class);
+                Intent intent = new Intent(HomeActivity.this,CitiBikeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        roadConditionFunc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this,RoadConditionActivity.class);
                 startActivity(intent);
             }
         });

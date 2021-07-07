@@ -3,6 +3,7 @@ package com.example.afinal;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -54,6 +55,7 @@ import java.util.Locale;
 
 public class CitiBikeActivity extends AppCompatActivity implements OnMapReadyCallback {
 
+    private static final int REQUEST_CALL = 1;
     boolean isPermissionGranted; //ask for location permission
     GoogleMap MGoogleMap;
     Button service;
@@ -61,16 +63,26 @@ public class CitiBikeActivity extends AppCompatActivity implements OnMapReadyCal
     Button account;
     private boolean mIsRestore;
     private ClusterManager<MyItem> mClusterManager;
+    ImageView back;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_citi_bike);
-        service = findViewById(R.id.Service);
-        rent = findViewById(R.id.Rent);
-        account = findViewById(R.id.Account);
+        service = findViewById(R.id.index_service);
+        rent = findViewById(R.id.index_rent);
+        account = findViewById(R.id.index_account);
         mIsRestore = savedInstanceState != null;
+        back = (ImageView) findViewById(R.id.BikeShare_index_back);
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
         checkMyPermission();
 
         //check if google play services available
@@ -83,6 +95,29 @@ public class CitiBikeActivity extends AppCompatActivity implements OnMapReadyCal
                 Toast.makeText(this, "GooglePlay Services Not Available", Toast.LENGTH_SHORT).show();
             }
         }
+
+        rent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), BikeShareRentAcitvity.class);
+                startActivity(intent);
+            }
+        });
+
+        account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), BikeShareAccountActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makePhoneCall();
+            }
+        });
     }
 
 
@@ -143,7 +178,6 @@ public class CitiBikeActivity extends AppCompatActivity implements OnMapReadyCal
 //        googleMap.animateCamera(cameraUpdate);
 
         //gesture settings
-        googleMap.getUiSettings().setZoomControlsEnabled(true);
         googleMap.getUiSettings().setCompassEnabled(true);
         googleMap.getUiSettings().setZoomGesturesEnabled(true);
         googleMap.getUiSettings().setScrollGesturesEnabled(true);
@@ -218,11 +252,13 @@ public class CitiBikeActivity extends AppCompatActivity implements OnMapReadyCal
     protected GoogleMap getMap() { return MGoogleMap; }
 
     protected void startCluster(boolean isRestore) {
-
+        if (!isRestore) {
+            getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.74177603, -74.00149746), 17));
+        }
         mClusterManager = new ClusterManager<>(this, getMap());
 
         //item appearance
-        RoadConditionRenderer renderer = new RoadConditionRenderer(this, getMap(), mClusterManager);
+        CitiBikeRenderer renderer = new CitiBikeRenderer(this, getMap(), mClusterManager);
         mClusterManager.setRenderer(renderer);
 
         //set onClickListener
@@ -244,7 +280,7 @@ public class CitiBikeActivity extends AppCompatActivity implements OnMapReadyCal
                 final LayoutInflater inflater = LayoutInflater.from(CitiBikeActivity.this);
                 final View view = inflater.inflate(R.layout.layout, null);
                 final TextView textView = view.findViewById(R.id.textViewTitle);
-                String text = (marker.getTitle() != null) ? marker.getTitle() : "Cluster Item";
+                String text = (marker.getTitle() != null) ? marker.getTitle() : "No Information";
                 textView.setText(text);
                 return view;
             }
@@ -254,10 +290,10 @@ public class CitiBikeActivity extends AppCompatActivity implements OnMapReadyCal
                 return null;
             }
         });
-        mClusterManager.getMarkerCollection().setOnInfoWindowClickListener(marker ->
-                Toast.makeText(CitiBikeActivity.this,
-                        "Info window clicked.",
-                        Toast.LENGTH_SHORT).show());
+//        mClusterManager.getMarkerCollection().setOnInfoWindowClickListener(marker ->
+//                Toast.makeText(CitiBikeActivity.this,
+//                        "Info window clicked.",
+//                        Toast.LENGTH_SHORT).show());
 
         try {
             readItems();
@@ -276,4 +312,27 @@ public class CitiBikeActivity extends AppCompatActivity implements OnMapReadyCal
         mClusterManager.addItems(items);
     }
 
+    private void makePhoneCall(){
+        String number = "13758128408";
+        if(ContextCompat.checkSelfPermission(CitiBikeActivity.this,
+                Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(CitiBikeActivity.this,
+                    new String[] {Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+        }else{
+            String dial = "tel:" + number;
+            startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == REQUEST_CALL){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                makePhoneCall();
+            }else{
+                Toast.makeText(this, "Permission denied...!", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 }

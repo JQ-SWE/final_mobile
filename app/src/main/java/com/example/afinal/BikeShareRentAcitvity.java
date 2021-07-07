@@ -46,7 +46,7 @@ public class BikeShareRentAcitvity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BikeShareIndexActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CitiBikeActivity.class);
                 startActivity(intent);
             }
         });

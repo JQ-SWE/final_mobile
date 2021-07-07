@@ -16,15 +16,14 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.provider.Settings;
-import android.provider.Telephony;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +33,6 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -54,7 +52,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -63,6 +60,7 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
     ImageView Search;
     EditText inputLocation;
     Button subway;
+    Button bus;
     private boolean mIsRestore;
     private ClusterManager<MyItem> mClusterManager;
 
@@ -73,6 +71,7 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
         Search = findViewById(R.id.SearchIcon);
         inputLocation = findViewById(R.id.inputLocation);
         subway = findViewById(R.id.Subway);
+        bus = findViewById(R.id.Bus);
         mIsRestore = savedInstanceState != null;
 
         checkMyPermission();
@@ -89,13 +88,6 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
         }
         Search.setOnClickListener(this::geoLocate);
 
-//        subway.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(NewTripTest.this,SubwayActivity.class);
-//                startActivity(intent);
-//            }
-//        });
     }
 
     private void geoLocate(View view) {
@@ -167,6 +159,7 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
         }).check();
     }
 
+
     //write anything needed in this function (e.g. Marker, Zoom, Gesture)
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -225,7 +218,13 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
             subway.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startCluster(mIsRestore);
+                    startCluster(mIsRestore,1);
+                }
+            });
+            bus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startCluster(mIsRestore,2);
                 }
             });
         }
@@ -261,13 +260,22 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
 
     protected GoogleMap getMap() { return MGoogleMap; }
 
-    protected void startCluster(boolean isRestore) {
+    protected void startCluster(boolean isRestore, int type) {
+        if (!isRestore) {
+            getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.738228, -73.996209), 18));
+        }
 
         mClusterManager = new ClusterManager<>(this, getMap());
 
         //item appearance
-        RoadConditionRenderer renderer = new RoadConditionRenderer(this, getMap(), mClusterManager);
-        mClusterManager.setRenderer(renderer);
+        if(type == 1) {
+            SubwayRenderer renderer = new SubwayRenderer(this, getMap(), mClusterManager);
+            mClusterManager.setRenderer(renderer);
+        }else{
+            BusRenderer renderer = new BusRenderer(this, getMap(), mClusterManager);
+            mClusterManager.setRenderer(renderer);
+        }
+
 
         //set onClickListener
         mClusterManager.setOnClusterItemClickListener(item -> {
@@ -303,20 +311,38 @@ public class NewTripTest extends AppCompatActivity implements OnMapReadyCallback
                         "Info window clicked.",
                         Toast.LENGTH_SHORT).show());
 
-        try {
-            readItems();
-        } catch (JSONException e) {
-            Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
-        }
+        if (type == 1) {
+            try {
+                readItems(1);
+            } catch (JSONException e) {
+                Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
+            }
+
+            getMap().setOnCameraIdleListener(mClusterManager);
+
+        }else
+            try {
+                readItems(2);
+            } catch (JSONException e) {
+                Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
+            }
 
         getMap().setOnCameraIdleListener(mClusterManager);
-
     }
 
 
-    private void readItems() throws JSONException {
-        InputStream inputStream = getResources().openRawResource(R.raw.subway_entrance);
-        List<MyItem> items = new MyItemReader().read(inputStream);
+    private void readItems(int type) throws JSONException {
+        InputStream inputStream;
+        List<MyItem> items;
+        if(type == 1) {
+            inputStream = getResources().openRawResource(R.raw.subway_entrance);
+            items = new SubwayItemReader().read(inputStream);
+        }else
+        {
+            inputStream = getResources().openRawResource(R.raw.bus);
+            items = new BusItemReader().read(inputStream);
+        }
+
         mClusterManager.addItems(items);
     }
 

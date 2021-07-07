@@ -25,8 +25,8 @@ public class BikeItemReader {
             if (!object.isNull("stationName")) {
                 title = object.getString("stationName");
             }
-            if (!object.isNull("statusValue")) {
-                snippet = object.getString("statusValue");
+            if (!object.isNull("id")) {
+                snippet = object.getString("id");
             }
             items.add(new MyItem(lat, lng, title, snippet));
         }
