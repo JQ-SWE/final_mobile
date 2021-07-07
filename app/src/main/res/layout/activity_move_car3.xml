@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MoveCarActivity3">
+
+    <View
+        android:id="@+id/headline_bikeshare"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#8BC34A" />
+
+    <TextView
+        android:id="@+id/tv_movecar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Move the car"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-black"
+        android:textSize="34sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please provide a photo"
+        android:textSize="20dp"
+        android:layout_below="@+id/headline_bikeshare"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="150dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:src="@drawable/photo"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/iv_photo"/>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_movecarcapture"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="CAPTURE"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="470dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#8BC34A"/>
+
+    <Button
+        android:id="@+id/btn_movecarchoose"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="CHOOSE FROM GALLERY"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="530dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#8BC34A"/>
+
+    <Button
+        android:id="@+id/btn_movecarsubmit"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="SUBMIT"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="590dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#8BC34A"/>
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TopUpActivity">
+
+    <View
+        android:id="@+id/headline_bikeshare"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#8BC34A"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/tv_bikeshare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Top Up"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-black"
+        android:textSize="34sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bank Account : "
+        android:textSize="25dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="150dp"/>
+
+    <EditText
+        android:id="@+id/bankaccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:textSize="25dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Top-up amount($) : "
+        android:textSize="25dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="300dp"/>
+
+    <EditText
+        android:id="@+id/topupamount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:textSize="25dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:inputType="number"
+        android:ems="10"/>
+
+    <Button
+        android:id="@+id/topupconfirm"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="CONFIRM"
+        android:textSize="25dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="580dp"
+        android:backgroundTint="#8BC34A"/>
+
+    <TextView
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"/>
+
+
+</RelativeLayout>
