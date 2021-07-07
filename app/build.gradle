@@ -42,7 +42,8 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:4.2.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
-    implementation files('D:\\course\\mobile_app\\final_mobile\\app\\libs\\heresdk-explore-android-4.7.6.0.5777.aar')
+    implementation 'com.google.android.gms:play-services:12.0.1'
+    implementation files('D:\\AndroidDevelopment\\MelTraffic\\heresdk-explore-android-4.7.6.0.5777.aar')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     implementation 'com.google.android.material:material:1.3.0'
