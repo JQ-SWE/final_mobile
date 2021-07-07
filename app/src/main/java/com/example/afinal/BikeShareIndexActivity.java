@@ -26,7 +26,7 @@ public class BikeShareIndexActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bike_share_index);
+        setContentView(R.layout.activity_citi_bike);
 
         service = (Button) findViewById(R.id.index_service);
         rent = (Button) findViewById(R.id.index_rent);

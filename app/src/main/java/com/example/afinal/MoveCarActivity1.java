@@ -19,6 +19,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
@@ -30,9 +31,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
@@ -56,15 +60,25 @@ public class MoveCarActivity1 extends AppCompatActivity implements OnMapReadyCal
     TextView date;
     boolean isPermissionGranted; //ask for location permission
     GoogleMap MGoogleMap;
+    MapView mapView;
+    FusedLocationProviderClient fusedLocationProviderClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_move_car1);
 
-        back = (ImageView) findViewById(R.id.movecar1_back);
-        request = (Button) findViewById(R.id.movecar_request);
-        date = (TextView) findViewById(R.id.tv_date);
+        back = findViewById(R.id.movecar1_back);
+        request = findViewById(R.id.movecar_request);
+        date = findViewById(R.id.tv_date);
+        mapView = findViewById(R.id.mapView);
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(
+                MoveCarActivity1.this
+        );
+
+
+        checkPermission();
 
         Calendar calendar = Calendar.getInstance();
         String curdate = DateFormat.getDateInstance().format(calendar.getTime());
@@ -86,14 +100,18 @@ public class MoveCarActivity1 extends AppCompatActivity implements OnMapReadyCal
         });
         if (isPermissionGranted) {
             if (checkGooglePlayServices()) {
-                SupportMapFragment supportMapFragment = SupportMapFragment.newInstance();
-                getSupportFragmentManager().beginTransaction().add(R.id.RoadConditionContainer, supportMapFragment).commit();
-                supportMapFragment.getMapAsync(this);
+                mapView.getMapAsync(this);
+                mapView.onCreate(savedInstanceState);
+//                SupportMapFragment supportMapFragment = SupportMapFragment.newInstance();
+//                getSupportFragmentManager().beginTransaction().add(R.id.RoadConditionContainer, supportMapFragment).commit();
+//                supportMapFragment.getMapAsync(this);
+//                checkGooglePlayServices();
             } else {
                 Toast.makeText(this, "GooglePlay Services Not Available", Toast.LENGTH_SHORT).show();
             }
         }
     }
+
     private boolean checkGooglePlayServices() {
         GoogleApiAvailability googleApiAvailability = GoogleApiAvailability.getInstance();
         int result = googleApiAvailability.isGooglePlayServicesAvailable(this);
@@ -110,6 +128,33 @@ public class MoveCarActivity1 extends AppCompatActivity implements OnMapReadyCal
         }
         return false;
     }
+
+    private void checkPermission() {
+        Dexter.withContext(this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(new PermissionListener() {
+            @Override
+            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                isPermissionGranted = true;
+                Toast.makeText(MoveCarActivity1.this,"Permission Granted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                Intent intent = new Intent();
+                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                Uri uri = Uri.fromParts("package",getPackageName(),"");
+                intent.setData(uri);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                permissionToken.continuePermissionRequest();
+            }
+        }).check();
+    }
+
+
+
     private void checkMyPermission() {
 
         Dexter.withContext(this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(new PermissionListener() {
@@ -134,15 +179,26 @@ public class MoveCarActivity1 extends AppCompatActivity implements OnMapReadyCal
             }
         }).check();
     }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         MGoogleMap = googleMap;
+        //add marker
+//        LatLng latLng = new LatLng(45, -104);
+//        MarkerOptions markerOptions = new MarkerOptions();
+//        markerOptions.title("My position");
+//        markerOptions.position(latLng);
+//        MGoogleMap.addMarker(markerOptions);
+//        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 5);
+//        googleMap.animateCamera(cameraUpdate);
 
-        LatLng test = new LatLng(-34,151);
-        MGoogleMap.addMarker(new MarkerOptions().position(test).title("test point")
-                .icon(bitmapDescriptorFromVector(getApplicationContext(),R.drawable.videocam_black)));
-        MGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(test));
-
+        //gesture settings
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
+        googleMap.getUiSettings().setCompassEnabled(true);
+        googleMap.getUiSettings().setZoomGesturesEnabled(true);
+        googleMap.getUiSettings().setScrollGesturesEnabled(true);
+        googleMap.getUiSettings().setRotateGesturesEnabled(true);
+        //get current location
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -154,7 +210,6 @@ public class MoveCarActivity1 extends AppCompatActivity implements OnMapReadyCal
             return;
         }
         googleMap.setMyLocationEnabled(true);
-        // Getting LocationManager object from System Service LOCATION_SERVICE
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         // Creating a criteria object to retrieve provider
@@ -179,20 +234,43 @@ public class MoveCarActivity1 extends AppCompatActivity implements OnMapReadyCal
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 17);
             googleMap.animateCamera(cameraUpdate);
 
-            //map UI and gesture
-            googleMap.getUiSettings().setZoomControlsEnabled(true);
-            googleMap.getUiSettings().setCompassEnabled(true);
         }
     }
 
-    private BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorResID){
-        Drawable vectorDrawable = ContextCompat.getDrawable(context,vectorResID);
-        vectorDrawable.setBounds(0,0,vectorDrawable.getIntrinsicWidth(),
-                vectorDrawable.getIntrinsicHeight());
-        Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(),
-                vectorDrawable.getIntrinsicHeight(),Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        vectorDrawable.draw(canvas);
-        return BitmapDescriptorFactory.fromBitmap(bitmap);
+    protected void onStart(){
+        super.onStart();
+        mapView.onStart();
+    }
+
+    protected void onResume(){
+        super.onResume();
+        mapView.onResume();
+    }
+
+    protected void onPause(){
+        super.onPause();
+        mapView.onPause();
+    }
+
+    protected void onStop(){
+        super.onStop();
+        mapView.onStop();
+    }
+
+    protected void onDestroy(){
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    public void onSaveInstanceState(@NonNull Bundle outState,@NonNull PersistableBundle outPersistence){
+        super.onSaveInstanceState(outState,outPersistence);
+        mapView.onSaveInstanceState(outState);
+    }
+
+
+
+    public void onLowMemory(){
+        super.onLowMemory();
+        mapView.onLowMemory();
     }
 }

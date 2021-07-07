@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.afinal">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -25,7 +26,6 @@
         <activity android:name=".CheckoutActivity"></activity>
         <activity android:name=".TopUpActivity" />
         <activity android:name=".CarSuccess" />
-        <activity android:name=".MoveCarActivity4" />
         <activity android:name=".BikeShareRecordActivity" />
         <activity android:name=".BikeShareIndexActivity" />
         <activity android:name=".MoveCarActivity3" />
@@ -45,9 +45,6 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
         <activity android:name=".NewTripTest" />
         <activity android:name=".CitiBikeActivity" />
         <activity
@@ -68,7 +65,9 @@
 
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:value="12451000"
+            tools:replace="android:value"/>
+
 
         <uses-library
             android:name="org.apache.http.legacy"

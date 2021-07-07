@@ -65,6 +65,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        roadConditionFunc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this,RoadConditionActivity.class);
+                startActivity(intent);
+            }
+        });
 
         citiBikeFunc.setOnClickListener(new View.OnClickListener() {
             @Override
