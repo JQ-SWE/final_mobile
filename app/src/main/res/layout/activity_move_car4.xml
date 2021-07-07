@@ -9,27 +9,18 @@
     <View
         android:id="@+id/headline_bikeshare"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:background="@color/grey" />
+        android:layout_height="50dp"
+        android:background="#8BC34A" />
 
     <TextView
         android:id="@+id/tv_movecar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:fontFamily="monospace"
-        android:padding="25dp"
         android:text="Move the car"
         android:textColor="@color/white"
-        android:textSize="30sp" />
-
-    <ImageView
-        android:id="@+id/movecar4_back"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="10dp"
-        app:srcCompat="@drawable/abc_vector_test" />
+        android:fontFamily="sans-serif-black"
+        android:textSize="34sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -129,6 +120,7 @@
         android:text="BACK TO HOMEPAGE"
         android:textSize="20dp"
         android:layout_marginTop="590dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#8BC34A"/>
 
 </RelativeLayout>

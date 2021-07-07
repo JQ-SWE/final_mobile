@@ -20,7 +20,6 @@ import java.util.TimerTask;
 
 public class BikeShareRecordActivity extends AppCompatActivity {
 
-    ImageView back;
     TextView bikenum, starttime, period, cost;
     Button calculate, checkout;
 
@@ -34,7 +33,6 @@ public class BikeShareRecordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bike_share_record);
 
-        back = (ImageView) findViewById(R.id.BikeShare_record_back);
         bikenum = (TextView) findViewById(R.id.bikesharerecord_identifier);
         starttime = (TextView) findViewById(R.id.bikesharerecord_starttime);
         period = (TextView) findViewById(R.id.bikesharerecord_period);
@@ -64,14 +62,6 @@ public class BikeShareRecordActivity extends AppCompatActivity {
         };
 
         timer.scheduleAtFixedRate(timerTask, 0,1000);
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BikeShareRentAcitvity.class);
-                startActivity(intent);
-            }
-        });
 
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override

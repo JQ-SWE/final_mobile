@@ -19,7 +19,6 @@ import android.widget.Toast;
 public class BikeShareIndexActivity extends AppCompatActivity {
 
     Button service, rent, account;
-    ImageView back;
 
     private static final int REQUEST_CALL = 1;
 
@@ -31,15 +30,6 @@ public class BikeShareIndexActivity extends AppCompatActivity {
         service = (Button) findViewById(R.id.index_service);
         rent = (Button) findViewById(R.id.index_rent);
         account = (Button) findViewById(R.id.index_account);
-        back = (ImageView) findViewById(R.id.BikeShare_index_back);
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
-            }
-        });
 
         rent.setOnClickListener(new View.OnClickListener() {
             @Override

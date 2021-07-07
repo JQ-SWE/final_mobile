@@ -14,7 +14,6 @@ import android.widget.Toast;
 public class TopUpActivity extends AppCompatActivity {
 
     EditText bank, amount;
-    ImageView back;
     Button confirm;
     TextView test;
 
@@ -27,7 +26,6 @@ public class TopUpActivity extends AppCompatActivity {
 
         bank = (EditText) findViewById(R.id.bankaccount);
         amount = (EditText) findViewById(R.id.topupamount);
-        back = (ImageView) findViewById(R.id.BikeShare_topup_back);
         confirm = (Button) findViewById(R.id.topupconfirm);
         test = findViewById(R.id.test);
 
@@ -36,15 +34,6 @@ public class TopUpActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String restbalance = intent.getStringExtra("balance");
         String phone = intent.getStringExtra("phone");
-
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BikeShareAccountActivity.class);
-                startActivity(intent);
-            }
-        });
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override

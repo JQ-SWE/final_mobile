@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class MoveCarActivity4 extends AppCompatActivity {
 
-    ImageView back, photo;
+    ImageView photo;
     TextView license, location, message;
     Button backtohome;
 
@@ -23,7 +23,6 @@ public class MoveCarActivity4 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_move_car4);
 
-        back = (ImageView) findViewById(R.id.movecar4_back);
         photo = (ImageView) findViewById(R.id.iv4_photo4);
         license = (TextView) findViewById(R.id.tv4_licenseno);
         location = (TextView) findViewById(R.id.tv4_location);
@@ -41,14 +40,6 @@ public class MoveCarActivity4 extends AppCompatActivity {
         location.setText(Location);
         message.setText(Message);
         photo.setImageBitmap(Image);
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MoveCarActivity4.this,MoveCarActivity3.class);
-                startActivity(intent);
-            }
-        });
 
         backtohome.setOnClickListener(new View.OnClickListener() {
             @Override

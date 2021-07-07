@@ -16,7 +16,6 @@ import java.util.Calendar;
 
 public class MoveCarActivity1 extends AppCompatActivity {
 
-    ImageView back;
     Button request;
     TextView date, location;
 
@@ -25,7 +24,6 @@ public class MoveCarActivity1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_move_car1);
 
-        back = (ImageView) findViewById(R.id.movecar1_back);
         request = (Button) findViewById(R.id.movecar_request);
         date = (TextView) findViewById(R.id.tv_date);
         location = (TextView) findViewById(R.id.et_movecar_location);
@@ -34,14 +32,6 @@ public class MoveCarActivity1 extends AppCompatActivity {
         String curdate = DateFormat.getDateInstance().format(calendar.getTime());
         date.setText(curdate);
         location.setText("location");
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MoveCarActivity1.this,HomeActivity.class);
-                startActivity(intent);
-            }
-        });
 
         request.setOnClickListener(new View.OnClickListener() {
             @Override
