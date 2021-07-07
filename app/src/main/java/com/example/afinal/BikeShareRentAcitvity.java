@@ -29,7 +29,7 @@ import java.util.TimerTask;
 
 public class BikeShareRentAcitvity extends AppCompatActivity {
 
-    ImageView btScan, back;
+    ImageView btScan;
     Button confirm;
     EditText identifier;
     TextView balance, test;
@@ -42,7 +42,6 @@ public class BikeShareRentAcitvity extends AppCompatActivity {
         setContentView(R.layout.activity_bike_share_rent_acitvity);
 
         btScan = (ImageButton) findViewById(R.id.btn_scan);
-        back = (ImageView) findViewById(R.id.BikeShare_rent_back);
         confirm = (Button) findViewById(R.id.bikeconfirm);
         identifier = (EditText) findViewById(R.id.et_bikeidentifier);
         balance = (TextView) findViewById(R.id.rentbalance);
@@ -75,14 +74,6 @@ public class BikeShareRentAcitvity extends AppCompatActivity {
                 intent.putExtra("balance", Totalbalance);
                 intent.putExtra("identifier", Identifier);
                 intent.putExtra("datetime", datetime);
-                startActivity(intent);
-            }
-        });
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CitiBikeActivity.class);
                 startActivity(intent);
             }
         });

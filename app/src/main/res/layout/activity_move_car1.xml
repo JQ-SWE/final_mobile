@@ -9,38 +9,18 @@
     <View
         android:id="@+id/headline_bikeshare"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:background="@color/grey" />
+        android:layout_height="50dp"
+        android:background="#8BC34A" />
 
     <TextView
         android:id="@+id/tv_movecar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:fontFamily="monospace"
-        android:padding="25dp"
         android:text="Move the car"
         android:textColor="@color/white"
-        android:textSize="30sp" />
-
-    <ImageView
-        android:id="@+id/movecar1_back"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/abc_vector_test" />
-
-    <FrameLayout
-        android:id="@+id/RoadConditionContainer"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_above="@id/tv_movecar_time"
-
-        android:layout_marginBottom="460dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:fontFamily="sans-serif-black"
+        android:textSize="34sp" />
 
     <TextView
         android:id="@+id/tv_movecar_time"
@@ -56,49 +36,51 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="460dp"
         android:layout_marginEnd="20dp"
-        android:format24Hour="hh:mm:ss"
+        android:layout_marginTop="460dp"
+        android:textSize="20dp"
         android:textColor="@android:color/secondary_text_light"
-        android:textSize="20dp" />
+        android:format24Hour="hh:mm:ss"/>
 
     <TextView
         android:id="@+id/tv_date"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="460dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginTop="460dp"
         android:textColor="@android:color/secondary_text_light"
-        android:textSize="20dp" />
+        android:textSize="20dp"/>
 
     <TextView
         android:id="@+id/tv_movecar_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_movecar_time"
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
         android:text="Location :"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_below="@+id/tv_movecar_time"/>
 
-    <EditText
+    <TextView
         android:id="@+id/et_movecar_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tc_movecar_time"
         android:layout_marginStart="130dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="10dp" />
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="40dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/tc_movecar_time"/>
 
     <Button
         android:id="@+id/movecar_request"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:layout_below="@+id/et_movecar_location"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
         android:text="APPLY FOR MOVING THE CAR"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_below="@+id/et_movecar_location"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#8BC34A" />
 
 </RelativeLayout>
