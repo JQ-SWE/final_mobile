@@ -7,6 +7,7 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -19,6 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Final">
+        <activity android:name=".RoadConditionActivity"></activity>
+        <activity android:name=".MoveCarActivity4" />
         <activity android:name=".CheckoutActivity"></activity>
         <activity android:name=".TopUpActivity" />
         <activity android:name=".CarSuccess" />
@@ -33,6 +36,7 @@
         <activity android:name=".AddNewCar" />
         <activity android:name=".ManageMyCar" />
         <activity android:name=".UserProfile" />
+  
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -41,7 +45,14 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
         <activity android:name=".NewTripTest" />
+        <activity android:name=".CitiBikeActivity" />
+        <activity
+            android:name=".RoadCondition"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -54,6 +65,15 @@
         <activity android:name=".FindPasswordActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
         <activity
             android:name=".Capture"
             android:screenOrientation="portrait"
@@ -63,6 +83,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBrz7h0iz_24QhvTlZIdTp89BS1Fx860M0" />
+
+        <meta-data android:name="com.here.sdk.access_key_id" android:value="YziCm0SolxnJIvzqDY_hEQ"/>
+        <meta-data android:name="com.here.sdk.access_key_secret" android:value="CyMI5EtbIHaqnL8vfS6due_h6RlUfibV2Q30bPho6PzXCdXRWAGn9TXxETX6GQjxmi3UKgBIRgBf1TQ36Kas4Q"/>
+
     </application>
 
 </manifest>
