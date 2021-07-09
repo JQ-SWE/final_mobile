@@ -18,7 +18,7 @@
             android:layout_centerHorizontal="true"
             android:background="#8BC34A"
             android:fontFamily="sans-serif-black"
-            android:text="Add New Car"
+            android:text="ADD NEW CAR"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="34sp" />

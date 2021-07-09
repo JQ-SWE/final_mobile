@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Move the car"
+        android:text="MOVE CAR"
         android:textColor="@color/white"
         android:fontFamily="sans-serif-black"
         android:textSize="34sp" />
@@ -31,17 +31,18 @@
         android:id="@+id/tv_movecar_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="460dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="490dp"
         android:text="Time :"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="@color/black"/>
 
     <TextClock
         android:id="@+id/tc_movecar_time"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="460dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="490dp"
         android:layout_marginEnd="20dp"
         android:format24Hour="hh:mm:ss"
         android:textColor="@android:color/secondary_text_light"
@@ -49,42 +50,22 @@
 
     <TextView
         android:id="@+id/tv_date"
-        android:layout_width="250dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="460dp"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="490dp"
         android:layout_marginEnd="20dp"
         android:textColor="@android:color/secondary_text_light"
         android:textSize="20dp" />
-
-    <TextView
-        android:id="@+id/tv_movecar_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_movecar_time"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        android:text="Location :"
-        android:textSize="20dp" />
-
-    <TextView
-        android:id="@+id/et_movecar_location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tc_movecar_time"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="10dp"
-        android:textSize="20dp"/>
 
     <Button
         android:id="@+id/movecar_request"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:layout_below="@+id/et_movecar_location"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="550dp"
         android:text="APPLY FOR MOVING THE CAR"
+        android:backgroundTint="#8BC34A"
         android:textSize="20dp" />
 
 </RelativeLayout>

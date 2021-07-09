@@ -62,7 +62,7 @@ public class SignUpActivity extends AppCompatActivity {
                             Boolean insert = DB.insertData(certtype, certnumber, Name, phone, Location, pass, question, answer, rentalno, rentalhour, balance);
                             if (insert) {
                                 Toast.makeText(SignUpActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(SignUpActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();

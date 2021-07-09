@@ -54,11 +54,10 @@ import java.util.Calendar;
 public class MoveCarActivity1 extends AppCompatActivity implements OnMapReadyCallback {
 
     Button request;
-    TextView date, location;
+    TextView date;
     boolean isPermissionGranted; //ask for location permission
     GoogleMap MGoogleMap;
     MapView mapView;
-    Double x1, y1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +66,6 @@ public class MoveCarActivity1 extends AppCompatActivity implements OnMapReadyCal
 
         request = (Button) findViewById(R.id.movecar_request);
         date = (TextView) findViewById(R.id.tv_date);
-        location = (TextView) findViewById(R.id.et_movecar_location);
         mapView = findViewById(R.id.mapView);
 
         checkPermission();
@@ -75,9 +73,6 @@ public class MoveCarActivity1 extends AppCompatActivity implements OnMapReadyCal
         Calendar calendar = Calendar.getInstance();
         String curdate = DateFormat.getDateInstance().format(calendar.getTime());
         date.setText(curdate);
-        String x = String.valueOf(x1);
-        String y = String.valueOf(y1);
-        location.setText(x);
 
         request.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -221,9 +216,6 @@ public class MoveCarActivity1 extends AppCompatActivity implements OnMapReadyCal
 
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 17);
             googleMap.animateCamera(cameraUpdate);
-
-            x1 = latitude;
-            y1 = longitude;
 
         }
     }

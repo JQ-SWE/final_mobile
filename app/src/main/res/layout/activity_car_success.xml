@@ -22,7 +22,7 @@
                 android:layout_centerHorizontal="true"
                 android:background="#8BC34A"
                 android:fontFamily="sans-serif-black"
-                android:text="My Vehicle"
+                android:text="MY VEHICLE"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="34sp" />

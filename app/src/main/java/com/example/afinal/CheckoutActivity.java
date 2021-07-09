@@ -48,8 +48,9 @@ public class CheckoutActivity extends AppCompatActivity {
                 String str_totalrest = Integer.toString(totalrest);
                 boolean topup = DB.topup(str_totalrest, phone);
                 if(topup){
-                    Toast.makeText(CheckoutActivity.this, "Checkout successfully, please log in again", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(CheckoutActivity.this,LoginActivity.class);
+                    Toast.makeText(CheckoutActivity.this, "Checkout successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(CheckoutActivity.this,CitiBikeActivity.class);
+                    intent.putExtra("phone", phone);
                     startActivity(intent);
                 }
             }
