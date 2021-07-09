@@ -31,7 +31,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/user_profile"
                 android:fontFamily="sans-serif-black"
-                android:text="Wang Rongyi"
+                android:text="Welcome to       Mel Traffic"
+                android:gravity="center"
                 android:textSize="30sp" />
 
         </RelativeLayout>
@@ -152,7 +153,7 @@
                     android:id="@+id/profilename"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="name"
+                    android:text="xxx"
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="25dp"
                     android:textSize="20dp"/>
@@ -181,7 +182,7 @@
                     android:id="@+id/profilephone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="name"
+                    android:text="xxx"
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="25dp"
                     android:textSize="20dp"/>
@@ -210,7 +211,7 @@
                     android:id="@+id/profilepassport"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="name"
+                    android:text="xxx"
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="25dp"
                     android:textSize="20dp"/>
@@ -239,7 +240,7 @@
                     android:id="@+id/profilelocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="name"
+                    android:text="xxx"
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="25dp"
                     android:textSize="20dp"/>
