@@ -89,11 +89,14 @@ public class BikeShareRecordActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String totalcost = cost.getText().toString();
+                int rounded = (int) Math.round(time);
+                String round = Integer.toString(rounded);
 
                 Intent intent = new Intent(BikeShareRecordActivity.this,CheckoutActivity.class);
                 intent.putExtra("phone", phone);
                 intent.putExtra("balance", balance);
                 intent.putExtra("cost", totalcost);
+                intent.putExtra("time", round);
                 startActivity(intent);
             }
 

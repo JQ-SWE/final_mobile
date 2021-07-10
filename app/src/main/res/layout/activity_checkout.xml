@@ -74,4 +74,16 @@
         android:layout_marginTop="580dp"
         android:layout_centerHorizontal="true"
         android:backgroundTint="#8BC34A" />
+
+    <TextView
+        android:id="@+id/rentalno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/rentalhour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"/>
 </RelativeLayout>
