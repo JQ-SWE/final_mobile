@@ -68,18 +68,14 @@ public class FindPasswordActivity extends AppCompatActivity {
                 String Phone = phone.getText().toString();
                 String Answer = answer.getText().toString();
 
-                if (Answer.equals(""))
-                    Toast.makeText(FindPasswordActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else {
-                    Boolean checkanswer = DB.checkUserAnswer(Phone, Answer);
-                    if (checkanswer == true) {
-                        Toast.makeText(FindPasswordActivity.this, "Successful Authentication", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
-                        intent.putExtra("userphone", Phone);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(FindPasswordActivity.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
-                    }
+                Boolean checkanswer = DB.checkUserAnswer(Phone, Answer);
+                if (checkanswer == true) {
+                    Toast.makeText(FindPasswordActivity.this, "Successful Authentication", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                    intent.putExtra("userphone", Phone);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(FindPasswordActivity.this, "Wrong Answer", Toast.LENGTH_SHORT).show();
                 }
             }
         });

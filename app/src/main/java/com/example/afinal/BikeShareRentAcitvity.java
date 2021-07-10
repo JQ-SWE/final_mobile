@@ -122,8 +122,7 @@ public class BikeShareRentAcitvity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     //dismiss dialog
                     dialog.dismiss();
-                }
-            });
+                }});
             //show alert dialog
             builder.show();
         }else{
@@ -131,6 +130,5 @@ public class BikeShareRentAcitvity extends AppCompatActivity {
             //display toast
             Toast.makeText(getApplicationContext(), "Oops...you did not scan anything", Toast.LENGTH_SHORT).show();
         }
-
     }
 }

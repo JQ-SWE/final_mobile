@@ -52,9 +52,10 @@ public class CheckoutActivity extends AppCompatActivity {
                     Intent intent = new Intent(CheckoutActivity.this,CitiBikeActivity.class);
                     intent.putExtra("phone", phone);
                     startActivity(intent);
+                }else{
+                    Toast.makeText(CheckoutActivity.this, "Checkout failed", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
     }
 }

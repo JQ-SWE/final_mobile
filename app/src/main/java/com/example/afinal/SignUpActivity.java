@@ -54,7 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
                 int balance = 0;
 
                 if (phone.equals("") || pass.equals("") || repass.equals(""))
-                    Toast.makeText(SignUpActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Please enter your phone number and password", Toast.LENGTH_SHORT).show();
                 else {
                     if (pass.equals(repass)) {
                         Boolean checkuser = DB.checkUser(phone);
@@ -89,13 +89,15 @@ public class SignUpActivity extends AppCompatActivity {
 
         //spinner for certificate type
         Spinner spinner_certificatetype = findViewById(R.id.spinner_certificatetype);
-        ArrayAdapter<CharSequence> adapter_certificatetype = ArrayAdapter.createFromResource(this, R.array.spinner_certificatetype, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter_certificatetype = ArrayAdapter.createFromResource(this,
+                R.array.spinner_certificatetype, android.R.layout.simple_spinner_item);
         adapter_certificatetype.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_certificatetype.setAdapter(adapter_certificatetype);
 
         //spinner for register city
         Spinner spinner_registercity = findViewById(R.id.spinner_city);
-        ArrayAdapter<CharSequence> adapter_registercity = ArrayAdapter.createFromResource(this, R.array.spinner_city, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter_registercity = ArrayAdapter.createFromResource(this,
+                R.array.spinner_city, android.R.layout.simple_spinner_item);
         adapter_registercity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_registercity.setAdapter(adapter_registercity);
     }

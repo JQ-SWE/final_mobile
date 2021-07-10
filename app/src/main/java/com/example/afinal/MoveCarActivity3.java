@@ -134,7 +134,6 @@ public class MoveCarActivity3 extends AppCompatActivity {
             //set capture image to imageview
             photo.setImageBitmap(captureImage);
         }
-
         if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             //set image to imageview
             photo.setImageURI(data.getData());

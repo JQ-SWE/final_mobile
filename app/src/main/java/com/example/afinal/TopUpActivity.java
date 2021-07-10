@@ -52,6 +52,8 @@ public class TopUpActivity extends AppCompatActivity {
                     Intent intent = new Intent(TopUpActivity.this,BikeShareAccountActivity.class);
                     intent.putExtra("phone", phone);
                     startActivity(intent);
+                }else{
+                    Toast.makeText(TopUpActivity.this, "Top up failed", Toast.LENGTH_SHORT).show();
                 }
             }
         });

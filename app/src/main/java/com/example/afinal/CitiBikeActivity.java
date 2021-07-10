@@ -311,7 +311,7 @@ public class CitiBikeActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     private void makePhoneCall(){
-        String number = "13758128408";
+        String number = "1-855-BIKE-311";
         if(ContextCompat.checkSelfPermission(CitiBikeActivity.this,
                 Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(CitiBikeActivity.this,
